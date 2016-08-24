@@ -9,8 +9,6 @@ import (
 	"sync"
 	"time"
 
-	"code.google.com/p/go-uuid/uuid"
-
 	"github.com/getlantern/appdir"
 	"github.com/getlantern/autoupdate"
 	"github.com/getlantern/bandwidth"
@@ -22,6 +20,7 @@ import (
 	"github.com/getlantern/golog"
 	"github.com/getlantern/netx"
 	"github.com/getlantern/protected"
+	"github.com/getlantern/uuid"
 
 	proclient "github.com/getlantern/pro-server-client/go-client"
 )
