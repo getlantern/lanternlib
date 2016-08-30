@@ -1,5 +1,5 @@
 hash: d880bd14134553093a933495a07360957d73f84367e6ce976935f4734ea1fbc9
-updated: 2016-08-29T22:52:59.636317482-05:00
+updated: 2016-08-29T22:58:30.989145055-05:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 15d8df1cd780ddb0bb1710b08a5546f2a8f027bf
@@ -32,7 +32,7 @@ imports:
 - name: github.com/fatih/set
   version: 27c40922c40b43fe04554d8223a402af3ea333f3
 - name: github.com/getlantern/appdir
-  version: 1592e4bff1cc767eaa8999484f0dce85ec364553
+  version: de84fb3b22a27138fecf604f2d9be12092e3a1e0
 - name: github.com/getlantern/autoupdate
   version: 922d89a582aa49b39c596a709f7495fccd09631b
 - name: github.com/getlantern/balancer
