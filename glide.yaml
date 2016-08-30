@@ -11,3 +11,6 @@ import:
 - package: github.com/getlantern/protected
 - package: github.com/getlantern/uuid
 - package: github.com/stripe/stripe-go
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert

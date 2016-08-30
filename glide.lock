@@ -1,5 +1,5 @@
-hash: d880bd14134553093a933495a07360957d73f84367e6ce976935f4734ea1fbc9
-updated: 2016-08-29T22:58:30.989145055-05:00
+hash: 7ff802068e35c524b6091ccc5e53b82072a72b664a302c23e6b3c9b9b5a5cc3d
+updated: 2016-08-30T06:03:37.80415443-05:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 15d8df1cd780ddb0bb1710b08a5546f2a8f027bf
@@ -58,7 +58,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 45b7e580e5e71b8f28e6bfd33ab23d93fa211d9c
+  version: 2ac993ad3a155d45a3968c0b5a5287e3976fd95a
   subpackages:
   - client
   - config
@@ -92,7 +92,7 @@ imports:
 - name: github.com/getlantern/jibber_jabber
   version: 7346f98d2644252b9fc10b89af1f1858b2dc29b9
 - name: github.com/getlantern/keyman
-  version: 068a9b24f9af425a6f662a8fe5dcc032e4001897
+  version: 27a13a8da00afce6b6b7e4b4b486a440b4629718
   subpackages:
   - certimporter
 - name: github.com/getlantern/netx
@@ -137,6 +137,10 @@ imports:
   version: db96a2b759cdef4f11a34506a42eb8d1290c598e
 - name: github.com/oxtoacart/bpool
   version: 4e1c5567d7c2dd59fa4c7c83d34c2f3528b025d6
+- name: github.com/stretchr/testify
+  version: d77da356e56a7428ad25149ca77381849a6a5232
+  subpackages:
+  - assert
 - name: github.com/stripe/stripe-go
   version: d597304dd1308b7b5587b3aee4671b5b4591b7a8
   subpackages:
