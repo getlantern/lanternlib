@@ -1,0 +1,13 @@
+package: github.com/getlantern/lanternlib
+import:
+- package: github.com/getlantern/appdir
+- package: github.com/getlantern/autoupdate
+- package: github.com/getlantern/bandwidth
+- package: github.com/getlantern/golog
+- package: github.com/getlantern/netx
+- package: github.com/getlantern/pro-server-client
+  subpackages:
+  - go-client
+- package: github.com/getlantern/protected
+- package: github.com/getlantern/uuid
+- package: github.com/stripe/stripe-go
