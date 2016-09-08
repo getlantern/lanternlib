@@ -15,7 +15,6 @@ import (
 	"github.com/getlantern/flashlight"
 	"github.com/getlantern/flashlight/client"
 	"github.com/getlantern/flashlight/config"
-	"github.com/getlantern/flashlight/feed"
 	"github.com/getlantern/flashlight/logging"
 	"github.com/getlantern/golog"
 	"github.com/getlantern/netx"
@@ -40,13 +39,13 @@ var (
 )
 
 func init() {
-	proclient.Configure(stagingMode)
+	proclient.Configure(stagingMode, compileTimePackageVersion)
 }
 
 // SocketProtector is an interface for classes that can protect Android sockets,
 // meaning those sockets will not be passed through the VPN.
 type SocketProtector interface {
-	Protect(fileDescriptor int) error
+	ProtectConn(fileDescriptor int) error
 }
 
 // ProtectConnections allows connections made by Lantern to be protected from
@@ -54,7 +53,7 @@ type SocketProtector interface {
 // because it keeps Lantern's own connections from being captured by the VPN and
 // resulting in an infinite loop.
 func ProtectConnections(dnsServer string, protector SocketProtector) {
-	p := protected.New(protector.Protect, dnsServer)
+	p := protected.New(protector.ProtectConn, dnsServer)
 	netx.OverrideDial(p.Dial)
 	netx.OverrideResolve(p.Resolve)
 }
@@ -77,8 +76,6 @@ type UserConfig interface {
 	BandwidthUpdate(int, int)
 }
 
-type FeedProvider feed.FeedProvider
-type FeedRetriever feed.FeedRetriever
 type Updater autoupdate.Updater
 
 // Start starts a HTTP and SOCKS proxies at random addresses. It blocks up till
@@ -224,13 +221,4 @@ func CheckForUpdates(shouldProxy bool) (string, error) {
 // file destination.
 func DownloadUpdate(url, apkPath string, shouldProxy bool, updater Updater) {
 	autoupdate.UpdateMobile(shouldProxy, url, apkPath, updater)
-}
-
-func GetFeed(locale string, allStr string, shouldProxy bool, provider FeedProvider) {
-	feed.GetFeed(locale, allStr, shouldProxy, provider)
-}
-
-// FeedByName grabs the feed results for a given feed source name
-func FeedByName(name string, retriever FeedRetriever) {
-	feed.FeedByName(name, retriever)
 }
