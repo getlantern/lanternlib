@@ -119,6 +119,38 @@ func redeemcode(r *proRequest) (*client.Response, error) {
 	return res, err
 }
 
+func userrecover(r *proRequest) (*client.Response, error) {
+	res, err := r.proClient.UserRecover(r.user, r.session.Email())
+	if err != nil || res.Status != "ok" {
+		log.Errorf("Could not recover user account: %v", err)
+	} else {
+		r.session.SetToken(res.User.Auth.Token)
+		r.session.SetUserId(res.User.Auth.ID)
+	}
+	return res, err
+}
+
+func verifycode(r *proRequest) (*client.Response, error) {
+	verifyCode := r.session.VerifyCode()
+	log.Debugf("Verify code is %s", verifyCode)
+	res, err := r.proClient.UserLinkValidate(r.user, verifyCode)
+	if err != nil || res.Status != "ok" {
+		log.Errorf("Could not verify user account: %v", err)
+	} else {
+		r.session.SetToken(res.User.Auth.Token)
+		r.session.SetUserId(res.User.Auth.ID)
+	}
+	return res, err
+}
+
+func linkrequest(r *proRequest) (*client.Response, error) {
+	res, err := r.proClient.UserLinkRequest(r.user, r.session.Email(), r.session.DeviceName())
+	if err != nil || res.Status != "ok" {
+		log.Errorf("Could not send user email: %v", err)
+	}
+	return res, err
+}
+
 func signin(r *proRequest) (*client.Response, error) {
 	r.user.Code = r.session.VerifyCode()
 	res, err := r.proClient.ApplyLinkCode(r.user)
@@ -206,9 +238,12 @@ func ProRequest(shouldProxy bool, command string, session Session) bool {
 		"purchase":    purchase,
 		"plans":       plans,
 		"signin":      signin,
+		"linkrequest": linkrequest,
 		"redeemcode":  redeemcode,
 		"requestcode": requestcode,
 		"userdata":    userdata,
+		"userrecover": userrecover,
+		"verifycode":  verifycode,
 		"referral":    referral,
 		"cancel":      cancel,
 	}
