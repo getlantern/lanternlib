@@ -28,7 +28,7 @@ type Session interface {
 	SetToken(string)
 	SetUserId(int)
 	SetDeviceCode(string, int64)
-	UserData(string, int64, string, string)
+	UserData(bool, int64, string, string)
 	SetCode(string)
 	SetError(string, string)
 	Currency() string
@@ -197,10 +197,28 @@ func userdata(r *proRequest) (*client.Response, error) {
 		return res, err
 	}
 	log.Debugf("User data: %v", res.User)
+
+	deviceLinked := true
+	deviceName := r.session.DeviceName()
+	deviceId := r.session.DeviceId()
+
+	isActive := res.User.UserStatus == "active"
+
+	if isActive {
+		// user is Pro but device may no longer be linked
+		deviceLinked = false
+	}
+
 	for _, device := range res.User.Devices {
+		if device.Name == deviceName || device.Id == deviceId {
+			deviceLinked = true
+		}
 		r.session.AddDevice(device.Id, device.Name)
 	}
-	r.session.UserData(res.User.UserStatus, res.User.Expiration, res.User.Subscription, res.User.Email)
+
+	r.session.UserData(isActive && deviceLinked,
+		res.User.Expiration, res.User.Subscription, res.User.Email)
+
 	return res, err
 }
 
