@@ -233,6 +233,25 @@ func handleError(err error) {
 	log.Error(err)
 }
 
+func extractUrl(surveys map[string]*json.RawMessage, locale string) (string, error) {
+
+	var survey SurveyInfo
+	var err error
+	if val, ok := surveys[locale]; ok {
+		err = json.Unmarshal(*val, &survey)
+		if err != nil {
+			handleError(fmt.Errorf("Error parsing survey: %v", err))
+			return "", err
+		}
+		log.Debugf("Found a survey for locale %s: %s", locale, survey.Url)
+		return survey.Url, nil
+	} else if locale != defaultLocale {
+		log.Debugf("No survey found for %s ; Using default locale: %s", locale, defaultLocale)
+		return extractUrl(surveys, defaultLocale)
+	}
+	return "", nil
+}
+
 func doSurveyRequest(locale string) (string, error) {
 	var err error
 	var req *http.Request
@@ -267,25 +286,14 @@ func doSurveyRequest(locale string) (string, error) {
 	}
 
 	if surveyResp["survey"] != nil {
-		var survey SurveyInfo
 		var surveys map[string]*json.RawMessage
-		url := ""
 		err = json.Unmarshal(*surveyResp["survey"], &surveys)
 		if err != nil {
 			handleError(fmt.Errorf("Error parsing survey: %v", err))
-			return url, err
+			return "", err
 		}
 		locale = strings.Replace(locale, "_", "-", -1)
-		if val, ok := surveys[locale]; ok {
-			err = json.Unmarshal(*val, &survey)
-			if err != nil {
-				handleError(fmt.Errorf("Error parsing survey: %v", err))
-				return url, err
-			}
-			url = survey.Url
-			log.Debugf("Found a survey for locale %s: %s", locale, url)
-		}
-		return url, nil
+		return extractUrl(surveys, locale)
 	}
 	log.Errorf("Error parsing survey response: missing from map")
 	return "", nil
