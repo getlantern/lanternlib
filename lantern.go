@@ -3,9 +3,13 @@ package lantern
 
 import (
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"net/http"
 	"os"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -28,6 +32,8 @@ var (
 	log = golog.LoggerFor("lantern")
 
 	updateServerURL = "https://update.getlantern.org"
+	defaultLocale   = `en-US`
+	surveyURL       = "https://raw.githubusercontent.com/getlantern/loconf/master/ui.json"
 
 	// compileTimePackageVersion is set at compile-time for production builds
 	compileTimePackageVersion string
@@ -64,6 +70,15 @@ func RemoveOverrides() {
 	netx.Reset()
 }
 
+type SurveyInfo struct {
+	Enabled  bool   `json:"enabled"`
+	Campaign string `json:"campaign"`
+	Url      string `json:"url"`
+	Message  string `json:"message"`
+	Thanks   string `json:"thanks"`
+	Button   string `json:"button"`
+}
+
 // StartResult provides information about the started Lantern
 type StartResult struct {
 	HTTPAddr   string
@@ -73,6 +88,7 @@ type StartResult struct {
 type UserConfig interface {
 	ConfigUpdate(bool)
 	AfterStart()
+	ShowSurvey(string)
 	BandwidthUpdate(int, int)
 }
 
@@ -91,12 +107,12 @@ type Updater autoupdate.Updater
 // start to use it, even as it finishes its initialization sequence. However,
 // initial activity may be slow, so clients with low read timeouts may
 // time out.
-func Start(configDir string, timeoutMillis int, user UserConfig) (*StartResult, error) {
+func Start(configDir string, locale string, timeoutMillis int, user UserConfig) (*StartResult, error) {
 
 	appdir.SetHomeDir(configDir)
 
 	startOnce.Do(func() {
-		go run(configDir, user)
+		go run(configDir, locale, user)
 	})
 
 	start := time.Now()
@@ -130,7 +146,7 @@ func (uc *userConfig) GetUserID() int64 {
 	return 0
 }
 
-func run(configDir string, user UserConfig) {
+func run(configDir, locale string, user UserConfig) {
 	flags := make(map[string]interface{})
 	flags["staging"] = false
 
@@ -160,11 +176,11 @@ func run(configDir string, user UserConfig) {
 		func() bool { return true },  // proxy all requests
 		make(map[string]interface{}), // no special configuration flags
 		func() bool {
-			beforeStart(user)
+			//beforeStart(user)
 			return true
 		}, // beforeStart()
 		func() {
-			afterStart(user)
+			afterStart(user, locale)
 		}, // afterStart()
 		func(cfg *config.Global) {
 			configUpdate(user, cfg)
@@ -175,7 +191,7 @@ func run(configDir string, user UserConfig) {
 	)
 }
 
-func beforeStart(user UserConfig) {
+func bandwidthUpdates(user UserConfig) {
 	go func() {
 		for quota := range bandwidth.Updates {
 
@@ -203,8 +219,76 @@ func beforeStart(user UserConfig) {
 	}()
 }
 
-func afterStart(user UserConfig) {
+func afterStart(user UserConfig, locale string) {
+	bandwidthUpdates(user)
 	user.AfterStart()
+	url, err := doSurveyRequest(locale)
+	if err == nil && url != "" {
+		user.ShowSurvey(url)
+	}
+}
+
+// handleError logs the given error message
+func handleError(err error) {
+	log.Error(err)
+}
+
+func doSurveyRequest(locale string) (string, error) {
+	var err error
+	var req *http.Request
+	var res *http.Response
+
+	var surveyResp map[string]*json.RawMessage
+
+	httpClient := &http.Client{}
+
+	if req, err = http.NewRequest("GET", surveyURL, nil); err != nil {
+		handleError(fmt.Errorf("Error fetching survey: %v", err))
+		return "", err
+	}
+
+	if res, err = httpClient.Do(req); err != nil {
+		handleError(fmt.Errorf("Error fetching feed: %v", err))
+		return "", err
+	}
+
+	defer res.Body.Close()
+
+	contents, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		handleError(fmt.Errorf("Error reading survey: %v", err))
+		return "", err
+	}
+
+	err = json.Unmarshal(contents, &surveyResp)
+	if err != nil {
+		handleError(fmt.Errorf("Error parsing survey: %v", err))
+		return "", err
+	}
+
+	if surveyResp["survey"] != nil {
+		var survey SurveyInfo
+		var surveys map[string]*json.RawMessage
+		url := ""
+		err = json.Unmarshal(*surveyResp["survey"], &surveys)
+		if err != nil {
+			handleError(fmt.Errorf("Error parsing survey: %v", err))
+			return url, err
+		}
+		locale = strings.Replace(locale, "_", "-", -1)
+		if val, ok := surveys[locale]; ok {
+			err = json.Unmarshal(*val, &survey)
+			if err != nil {
+				handleError(fmt.Errorf("Error parsing survey: %v", err))
+				return url, err
+			}
+			url = survey.Url
+			log.Debugf("Found a survey for locale %s: %s", locale, url)
+		}
+		return url, nil
+	}
+	log.Errorf("Error parsing survey response: missing from map")
+	return "", nil
 }
 
 func configUpdate(user UserConfig, cfg *config.Global) {
