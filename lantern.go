@@ -180,7 +180,7 @@ func run(configDir, locale string, user UserConfig) {
 			return true
 		}, // beforeStart()
 		func() {
-			afterStart(user, locale)
+			afterStart(user)
 		}, // afterStart()
 		func(cfg *config.Global) {
 			configUpdate(user, cfg)
@@ -194,38 +194,36 @@ func run(configDir, locale string, user UserConfig) {
 func bandwidthUpdates(user UserConfig) {
 	go func() {
 		for quota := range bandwidth.Updates {
-
-			remaining := 0
-			percent := 100
-			if quota == nil {
-				continue
-			}
-
-			allowed := quota.MiBAllowed
-			if allowed < 0 || allowed > 50000000 {
-				continue
-			}
-
-			if quota.MiBUsed >= quota.MiBAllowed {
-				percent = 100
-				remaining = 0
-			} else {
-				percent = int(100 * (float64(quota.MiBUsed) / float64(quota.MiBAllowed)))
-				remaining = int(quota.MiBAllowed - quota.MiBUsed)
-			}
-
-			user.BandwidthUpdate(percent, remaining)
+			user.BandwidthUpdate(getBandwidth(quota))
 		}
 	}()
 }
 
-func afterStart(user UserConfig, locale string) {
+func getBandwidth(quota *bandwidth.Quota) (int, int) {
+	remaining := 0
+	percent := 100
+	if quota == nil {
+		return 0, 0
+	}
+
+	allowed := quota.MiBAllowed
+	if allowed < 0 || allowed > 50000000 {
+		return 0, 0
+	}
+
+	if quota.MiBUsed >= quota.MiBAllowed {
+		percent = 100
+		remaining = 0
+	} else {
+		percent = int(100 * (float64(quota.MiBUsed) / float64(quota.MiBAllowed)))
+		remaining = int(quota.MiBAllowed - quota.MiBUsed)
+	}
+	return percent, remaining
+}
+
+func afterStart(user UserConfig) {
 	bandwidthUpdates(user)
 	user.AfterStart()
-	url, err := surveyRequest(locale)
-	if err == nil && url != "" {
-		user.ShowSurvey(url)
-	}
 }
 
 // handleError logs the given error message

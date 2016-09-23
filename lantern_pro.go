@@ -1,6 +1,7 @@
 package lantern
 
 import (
+	"github.com/getlantern/bandwidth"
 	"github.com/getlantern/flashlight/proxied"
 	"github.com/getlantern/pro-server-client/go-client"
 	"github.com/stripe/stripe-go"
@@ -29,6 +30,7 @@ type Session interface {
 	SetUserId(int)
 	SetDeviceCode(string, int64)
 	ShowSurvey(string)
+	BandwidthUpdate(int, int)
 	UserData(bool, int64, string, string)
 	SetCode(string)
 	SetError(string, string)
@@ -250,6 +252,12 @@ func ProRequest(shouldProxy bool, command string, session Session) bool {
 			log.Errorf("Error finding survey: %v", err)
 			return false
 		}
+	} else if command == "bandwidth" {
+		percent, remaining := getBandwidth(bandwidth.GetQuota())
+		if percent != 0 && remaining != 0 {
+			session.BandwidthUpdate(percent, remaining)
+		}
+		return true
 	}
 
 	req, err := newRequest(shouldProxy, session)
