@@ -244,7 +244,7 @@ func RemoveDevice(shouldProxy bool, deviceId string, session Session) bool {
 func ProRequest(shouldProxy bool, command string, session Session) bool {
 
 	if command == "survey" {
-		url, err := surveyRequest(session.Locale())
+		url, err := surveyRequest(shouldProxy, session.Locale())
 		if err == nil && url != "" {
 			session.ShowSurvey(url)
 			return true
