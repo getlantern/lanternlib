@@ -222,7 +222,7 @@ func bandwidthUpdates(user UserConfig) {
 func afterStart(user UserConfig, locale string) {
 	bandwidthUpdates(user)
 	user.AfterStart()
-	url, err := doSurveyRequest(locale)
+	url, err := surveyRequest(locale)
 	if err == nil && url != "" {
 		user.ShowSurvey(url)
 	}
@@ -252,7 +252,7 @@ func extractUrl(surveys map[string]*json.RawMessage, locale string) (string, err
 	return "", nil
 }
 
-func doSurveyRequest(locale string) (string, error) {
+func surveyRequest(locale string) (string, error) {
 	var err error
 	var req *http.Request
 	var res *http.Response

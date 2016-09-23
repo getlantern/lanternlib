@@ -28,6 +28,7 @@ type Session interface {
 	SetToken(string)
 	SetUserId(int)
 	SetDeviceCode(string, int64)
+	ShowSurvey(string)
 	UserData(bool, int64, string, string)
 	SetCode(string)
 	SetError(string, string)
@@ -239,6 +240,17 @@ func RemoveDevice(shouldProxy bool, deviceId string, session Session) bool {
 }
 
 func ProRequest(shouldProxy bool, command string, session Session) bool {
+
+	if command == "survey" {
+		url, err := surveyRequest(session.Locale())
+		if err == nil && url != "" {
+			session.ShowSurvey(url)
+			return true
+		} else {
+			log.Errorf("Error finding survey: %v", err)
+			return false
+		}
+	}
 
 	req, err := newRequest(shouldProxy, session)
 	if err != nil {
