@@ -242,6 +242,10 @@ func extractUrl(surveys map[string]*json.RawMessage, locale string) (string, err
 			handleError(fmt.Errorf("Error parsing survey: %v", err))
 			return "", err
 		}
+		if !survey.Enabled {
+			log.Debugf("Survey %s is disabled for locale: %s", survey.Url, locale)
+			return "", nil
+		}
 		log.Debugf("Found a survey for locale %s: %s", locale, survey.Url)
 		return survey.Url, nil
 	} else if locale != defaultLocale {

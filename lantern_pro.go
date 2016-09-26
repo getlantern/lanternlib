@@ -34,6 +34,7 @@ type Session interface {
 	UserData(bool, int64, string, string)
 	SetCode(string)
 	SetError(string, string)
+	SetErrorId(string, string)
 	Currency() string
 	SetStripePubKey(string)
 	AddPlan(string, string, string, bool, int, int)
@@ -291,6 +292,7 @@ func ProRequest(shouldProxy bool, command string, session Session) bool {
 		log.Errorf("Error making %s request to Pro server: %v response: %v", command, err, res)
 		if res != nil {
 			session.SetError(command, res.Error)
+			session.SetErrorId(command, res.ErrorId)
 		}
 		return false
 	}
