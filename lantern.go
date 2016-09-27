@@ -131,8 +131,12 @@ func (uc *userConfig) GetUserID() int64 {
 }
 
 func run(configDir string, user UserConfig) {
-	flags := make(map[string]interface{})
-	flags["staging"] = false
+	flags := map[string]interface{}{
+		"borda-report-interval":    5 * time.Minute,
+		"borda-sample-percentage":  float64(0.01),
+		"loggly-sample-percentage": float64(0.02),
+		"staging":                  false,
+	}
 
 	err := os.MkdirAll(configDir, 0755)
 	if os.IsExist(err) {
@@ -140,8 +144,8 @@ func run(configDir string, user UserConfig) {
 		return
 	}
 
-	if err := logging.EnableFileLogging(configDir); err != nil {
-		log.Errorf("Unable to enable file logging: %v", err)
+	if logErr := logging.EnableFileLogging(configDir); logErr != nil {
+		log.Errorf("Unable to enable file logging: %v", logErr)
 		return
 	}
 	log.Debugf("Writing log messages to %s/lantern.log", configDir)
@@ -153,12 +157,17 @@ func run(configDir string, user UserConfig) {
 		log.Errorf("Error parsing boolean flag: %v", err)
 	}
 
+	// Need to manually enable logging since we don't have settings in Mobile
+	// TODO: allow configuring whether or not to enable reporting (just like we
+	// already have in desktop)
+	logging.SetReportingEnabled(true)
+
 	flashlight.Run("127.0.0.1:0", // listen for HTTP on random address
 		"127.0.0.1:0", // listen for SOCKS on random address
 		configDir,     // place to store lantern configuration
 		false,         // don't make config sticky
-		func() bool { return true },  // proxy all requests
-		make(map[string]interface{}), // no special configuration flags
+		func() bool { return true }, // proxy all requests
+		flags,
 		func() bool {
 			beforeStart(user)
 			return true
