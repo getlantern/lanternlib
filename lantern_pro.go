@@ -287,7 +287,13 @@ func ProRequest(shouldProxy bool, command string, session Session) bool {
 		"cancel":      cancel,
 	}
 
-	res, err := commands[command](req)
+	cmd, cmdFound := commands[command]
+	if !cmdFound {
+		session.SetError(command, "Command not found")
+		return false
+	}
+
+	res, err := cmd(req)
 	if err != nil || res.Status != "ok" {
 		log.Errorf("Error making %s request to Pro server: %v response: %v", command, err, res)
 		if res != nil {
