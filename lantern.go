@@ -148,7 +148,6 @@ func (uc *userConfig) GetUserID() int64 {
 }
 
 func run(configDir, locale string, user UserConfig) {
-	flags := make(map[string]interface{})
 	flags := map[string]interface{}{
 		"borda-report-interval":    5 * time.Minute,
 		"borda-sample-percentage":  float64(0.01),
