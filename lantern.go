@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"os"
 	"strconv"
@@ -38,6 +39,17 @@ var (
 
 	// compileTimePackageVersion is set at compile-time for production builds
 	compileTimePackageVersion string
+
+	LogglyToken string
+
+	// Version is the version of Lantern we're running.
+	Version string
+
+	// RevisionDate is the date of the most recent code revision.
+	RevisionDate string // The revision date and time that is associated with the version string.
+
+	// BuildDate is the date the code was actually built.
+	BuildDate string // The actual date and time the binary was built.
 
 	// if true, run Lantern against our staging infrastructure
 	stagingMode = "false"
@@ -72,12 +84,13 @@ func RemoveOverrides() {
 }
 
 type SurveyInfo struct {
-	Enabled  bool   `json:"enabled"`
-	Campaign string `json:"campaign"`
-	Url      string `json:"url"`
-	Message  string `json:"message"`
-	Thanks   string `json:"thanks"`
-	Button   string `json:"button"`
+	Enabled     bool    `json:"enabled"`
+	Probability float64 `json:"probability"`
+	Campaign    string  `json:"campaign"`
+	Url         string  `json:"url"`
+	Message     string  `json:"message"`
+	Thanks      string  `json:"thanks"`
+	Button      string  `json:"button"`
 }
 
 // StartResult provides information about the started Lantern
@@ -110,6 +123,11 @@ type Updater autoupdate.Updater
 // time out.
 func Start(configDir string, locale string, timeoutMillis int, user UserConfig) (*StartResult, error) {
 
+	flashlight.Version = Version
+	flashlight.PackageVersion = compileTimePackageVersion
+	flashlight.RevisionDate = RevisionDate
+	flashlight.BuildDate = BuildDate
+	logging.SetLogglyToken(LogglyToken)
 	appdir.SetHomeDir(configDir)
 
 	startOnce.Do(func() {
@@ -255,6 +273,12 @@ func extractUrl(surveys map[string]*json.RawMessage, locale string) (string, err
 			log.Debugf("Survey %s is disabled for locale: %s", survey.Url, locale)
 			return "", nil
 		}
+
+		if rand.Float64() >= survey.Probability {
+			log.Debugf("Not electing to show survey based on probability field")
+			return "", nil
+		}
+
 		log.Debugf("Found a survey for locale %s: %s", locale, survey.Url)
 		return survey.Url, nil
 	} else if locale != defaultLocale {
