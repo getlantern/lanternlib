@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"os"
 	"strconv"
@@ -72,12 +73,13 @@ func RemoveOverrides() {
 }
 
 type SurveyInfo struct {
-	Enabled  bool   `json:"enabled"`
-	Campaign string `json:"campaign"`
-	Url      string `json:"url"`
-	Message  string `json:"message"`
-	Thanks   string `json:"thanks"`
-	Button   string `json:"button"`
+	Enabled     bool    `json:"enabled"`
+	Probability float64 `json:"probability"`
+	Campaign    string  `json:"campaign"`
+	Url         string  `json:"url"`
+	Message     string  `json:"message"`
+	Thanks      string  `json:"thanks"`
+	Button      string  `json:"button"`
 }
 
 // StartResult provides information about the started Lantern
@@ -255,6 +257,12 @@ func extractUrl(surveys map[string]*json.RawMessage, locale string) (string, err
 			log.Debugf("Survey %s is disabled for locale: %s", survey.Url, locale)
 			return "", nil
 		}
+
+		if rand.Float64() >= survey.Probability {
+			log.Debugf("Not electing to show survey based on probability field")
+			return "", nil
+		}
+
 		log.Debugf("Found a survey for locale %s: %s", locale, survey.Url)
 		return survey.Url, nil
 	} else if locale != defaultLocale {
