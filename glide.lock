@@ -1,5 +1,5 @@
 hash: 7ff802068e35c524b6091ccc5e53b82072a72b664a302c23e6b3c9b9b5a5cc3d
-updated: 2016-09-27T10:30:23.487986251-05:00
+updated: 2016-10-13T15:45:47.767926788-05:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -40,7 +40,7 @@ imports:
 - name: github.com/getlantern/bandwidth
   version: 96de96fff16cf1aa844edc1b4a72c906add83180
 - name: github.com/getlantern/borda
-  version: 49d716c6f0a075c94b1fd449bd6aebed8d48a5b1
+  version: fbb1bc83cc7b0bc0f0406f786cbd84ee8814e2f5
   subpackages:
   - client
 - name: github.com/getlantern/byteexec
@@ -50,7 +50,7 @@ imports:
 - name: github.com/getlantern/context
   version: 624d99b1798d7c5375ea1d3ca4c5b04d58f7c775
 - name: github.com/getlantern/detour
-  version: 62ef5bcad02d11b5879dc1b9ccb7f43934fc307a
+  version: 30cb163a67fb772d45f58c732ae5769bb0614d79
 - name: github.com/getlantern/errors
   version: 99fa440517e8f3d1e4cd8d6dbed6b41f4c1ed3d6
 - name: github.com/getlantern/eventual
@@ -58,7 +58,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: f999139d05664f812529ba4565601a639c569a3a
+  version: f482fcb83cb662a4d940e20b08aed0418cbe9660
   subpackages:
   - client
   - config
@@ -109,7 +109,7 @@ imports:
 - name: github.com/getlantern/proxiedsites
   version: 996122c1374578a85a536445d7d7ae88d3ee5a35
 - name: github.com/getlantern/proxybench
-  version: 85123f728631103f1d899081671040a9cd4beb3d
+  version: 2c89ec80427864c6f038a56f8486705155d103cb
 - name: github.com/getlantern/rot13
   version: 33f93fc1fe85c042c0667a1814e6379bd5e7eb40
 - name: github.com/getlantern/rotator
@@ -133,7 +133,7 @@ imports:
 - name: github.com/kr/binarydist
   version: 3035450ff8b987ec4373f65c40767f096b35f2d2
 - name: github.com/miekg/dns
-  version: db96a2b759cdef4f11a34506a42eb8d1290c598e
+  version: fc4e1e2843d86c346d7203160cfdbf14fa654a9b
 - name: github.com/oxtoacart/bpool
   version: 4e1c5567d7c2dd59fa4c7c83d34c2f3528b025d6
 - name: github.com/stretchr/testify
@@ -141,13 +141,13 @@ imports:
   subpackages:
   - assert
 - name: github.com/stripe/stripe-go
-  version: b51c93a81e8ddf4ad924225fe85eae1020ccc7ca
+  version: 0db87bf74ea7442e3a451b2fad520bfedd9cbc4c
   subpackages:
   - orderitem
 - name: github.com/visionmedia/go-debug
   version: ff4a55a20a86994118644bbddc6a216da193cc13
 - name: golang.org/x/crypto
-  version: 8e06e8ddd9629eb88639aba897641bff8031f1d3
+  version: 5f31782cfb2b6373211f8f9fbf31283fa234b570
   subpackages:
   - curve25519
   - hkdf
@@ -155,7 +155,7 @@ imports:
   - poly1305
   - salsa20/salsa
 - name: golang.org/x/net
-  version: f09c4662a0bd6bd8943ac7b4931e185df9471da4
+  version: 8b4af36cd21a1f85a7484b49feb7c79363106d8e
   subpackages:
   - context
 devImports: []
