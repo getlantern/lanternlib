@@ -40,17 +40,6 @@ var (
 	// compileTimePackageVersion is set at compile-time for production builds
 	compileTimePackageVersion string
 
-	LogglyToken string
-
-	// Version is the version of Lantern we're running.
-	Version string
-
-	// RevisionDate is the date of the most recent code revision.
-	RevisionDate string // The revision date and time that is associated with the version string.
-
-	// BuildDate is the date the code was actually built.
-	BuildDate string // The actual date and time the binary was built.
-
 	// if true, run Lantern against our staging infrastructure
 	stagingMode = "false"
 
@@ -123,11 +112,6 @@ type Updater autoupdate.Updater
 // time out.
 func Start(configDir string, locale string, timeoutMillis int, user UserConfig) (*StartResult, error) {
 
-	flashlight.Version = Version
-	flashlight.PackageVersion = compileTimePackageVersion
-	flashlight.RevisionDate = RevisionDate
-	flashlight.BuildDate = BuildDate
-	logging.SetLogglyToken(LogglyToken)
 	appdir.SetHomeDir(configDir)
 
 	startOnce.Do(func() {
