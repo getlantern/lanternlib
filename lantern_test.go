@@ -24,14 +24,15 @@ type testUserConfig struct{}
 func (c testUserConfig) AfterStart()              {}
 func (c testUserConfig) BandwidthUpdate(int, int) {}
 func (c testUserConfig) ConfigUpdate(bool)        {}
+func (c testUserConfig) ShowSurvey(survey string) {}
 
 func TestProxying(t *testing.T) {
 	tmpDir, err := ioutil.TempDir("", "testconfig")
 	if assert.NoError(t, err, "Unable to create temp configDir") {
 		defer os.RemoveAll(tmpDir)
-		result, err := Start(tmpDir, 5000, testUserConfig{})
+		result, err := Start(tmpDir, "en_US", 5000, testUserConfig{})
 		if assert.NoError(t, err, "Should have been able to start lantern") {
-			newResult, err := Start("testapp", 5000, testUserConfig{})
+			newResult, err := Start("testapp", "en_US", 5000, testUserConfig{})
 			if assert.NoError(t, err, "Should have been able to start lantern twice") {
 				if assert.Equal(t, result.HTTPAddr, newResult.HTTPAddr, "2nd start should have resulted in the same address") {
 					err := testProxiedRequest(result.HTTPAddr, false)
