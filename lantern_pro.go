@@ -26,6 +26,7 @@ type Session interface {
 	StripeToken() string
 	StripeApiKey() string
 	Email() string
+	AccountId() string
 	SetToken(string)
 	SetUserId(int)
 	SetDeviceCode(string, int64)
@@ -76,7 +77,7 @@ func newuser(r *proRequest) (*client.Response, error) {
 	if err != nil {
 		log.Errorf("Could not create new Pro user: %v", err)
 	} else {
-		log.Debugf("Created new user with referral %s token %s id %d", res.User.Referral, res.User.Auth.Token, res.User.Auth.ID)
+		log.Debugf("Created new user with referral %s", res.User.Referral, res.User.Auth.Token, res.User.Auth.ID)
 		r.session.SetUserId(res.User.Auth.ID)
 		r.session.SetToken(res.User.Auth.Token)
 		r.session.SetCode(res.User.Referral)
@@ -124,7 +125,7 @@ func redeemcode(r *proRequest) (*client.Response, error) {
 }
 
 func userrecover(r *proRequest) (*client.Response, error) {
-	res, err := r.proClient.UserRecover(r.user, r.session.Email())
+	res, err := r.proClient.UserRecover(r.user, r.session.AccountId())
 	if err != nil || res.Status != "ok" {
 		log.Errorf("Could not recover user account: %v", err)
 	} else {
