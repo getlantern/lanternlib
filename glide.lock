@@ -1,5 +1,5 @@
 hash: 61396f9cf05b67c1701b9df2cedebda5c550d9278e0f20507f08628e1a8089b0
-updated: 2016-11-01T08:44:40.847456-07:00
+updated: 2016-11-02T14:06:55.495591554-07:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -23,10 +23,6 @@ imports:
   version: e75332964ef517daa070d7c38a9466a0d687e0a5
 - name: github.com/blang/semver
   version: 60ec3488bfea7cca02b021d106d9911120d25fe9
-- name: github.com/davecgh/go-spew
-  version: 346938d642f2ec3594ed81d874461961cd0faa76
-  subpackages:
-  - spew
 - name: github.com/dchest/siphash
   version: 4ebf1de738443ea7f45f02dc394c4df1942a126d
 - name: github.com/fatih/set
@@ -56,7 +52,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 954eacdeffadd60b8759da2496d9eafa4b229b31
+  version: 9655679e564389d0fdcca0d43a713b0754d6e4ee
   subpackages:
   - balancer
   - chained
@@ -67,7 +63,6 @@ imports:
   - logging
   - ops
   - proxied
-  - proxy
   - status
 - name: github.com/getlantern/fronted
   version: 0fa5677c45d4bac8311197a2962e630eda1304a8
@@ -108,6 +103,8 @@ imports:
   version: b71bce31ee1925d8893c64b72715e0ebec8648d0
 - name: github.com/getlantern/proxiedsites
   version: 996122c1374578a85a536445d7d7ae88d3ee5a35
+- name: github.com/getlantern/proxy
+  version: 24caf02f302602f57f8202834d5c87e1203b29f3
 - name: github.com/getlantern/proxybench
   version: 2c89ec80427864c6f038a56f8486705155d103cb
 - name: github.com/getlantern/rot13
@@ -153,7 +150,7 @@ imports:
 - name: github.com/visionmedia/go-debug
   version: ff4a55a20a86994118644bbddc6a216da193cc13
 - name: github.com/xtaci/kcp-go
-  version: 3a58e7386935fc389887aab8d048f35b9f80d78b
+  version: 7112c1ca6856027af4d31ab3bb4f6cd09b47147a
 - name: github.com/xtaci/smux
   version: ee8b5b54eb6ae629b30ee558310927d8981bb668
 - name: golang.org/x/crypto
@@ -172,7 +169,7 @@ imports:
   - twofish
   - xtea
 - name: golang.org/x/net
-  version: 541150ac4f433e755f5663eba5d888c2fa347343
+  version: 6c4ac8bdbf06a105c4baf3dcda28bd9b0fb15588
   subpackages:
   - bpf
   - context
@@ -181,6 +178,10 @@ imports:
   - ipv4
   - proxy
 testImports:
+- name: github.com/davecgh/go-spew
+  version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9
+  subpackages:
+  - spew
 - name: github.com/pmezard/go-difflib
   version: d8ed2627bdf02c080bf22230dbb337003b7aba2d
   subpackages:
