@@ -1,5 +1,5 @@
 hash: 61396f9cf05b67c1701b9df2cedebda5c550d9278e0f20507f08628e1a8089b0
-updated: 2016-11-02T14:06:55.495591554-07:00
+updated: 2016-11-03T21:02:42.557378149-07:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -52,7 +52,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 9655679e564389d0fdcca0d43a713b0754d6e4ee
+  version: f36d91a54563cbf96ea73bdae8c081cdaa102fbc
   subpackages:
   - balancer
   - chained
@@ -144,7 +144,7 @@ imports:
 - name: github.com/pkg/errors
   version: 248dadf4e9068a0b3e79f02ed0a610d935de5302
 - name: github.com/stripe/stripe-go
-  version: e1e8931d9967a146f53138814013884729a87c7e
+  version: 84484ce43b9b0edbdfde86a4c8f9d082df9e3638
   subpackages:
   - orderitem
 - name: github.com/visionmedia/go-debug
@@ -169,7 +169,7 @@ imports:
   - twofish
   - xtea
 - name: golang.org/x/net
-  version: 6c4ac8bdbf06a105c4baf3dcda28bd9b0fb15588
+  version: 569280fa63be4e201b975e5411e30a92178f0118
   subpackages:
   - bpf
   - context
