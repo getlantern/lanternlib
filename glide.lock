@@ -1,5 +1,5 @@
 hash: 61396f9cf05b67c1701b9df2cedebda5c550d9278e0f20507f08628e1a8089b0
-updated: 2016-11-04T15:10:10.385635601-07:00
+updated: 2016-11-10T21:19:04.145565343-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -52,7 +52,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 49fd8b9b535aeec1eb380699266694ad1dc12400
+  version: 018bb330a23ef3cc92060e37fc683f449717e284
   subpackages:
   - balancer
   - chained
@@ -64,6 +64,7 @@ imports:
   - ops
   - proxied
   - status
+  - util
 - name: github.com/getlantern/fronted
   version: 0fa5677c45d4bac8311197a2962e630eda1304a8
 - name: github.com/getlantern/geolookup
@@ -144,15 +145,15 @@ imports:
 - name: github.com/pkg/errors
   version: 248dadf4e9068a0b3e79f02ed0a610d935de5302
 - name: github.com/stripe/stripe-go
-  version: 384013e77b5c177bd1ea55076142eb7090dc944c
+  version: e6f8840b669c4027f15720eac6d50a04d31eee76
   subpackages:
   - orderitem
 - name: github.com/visionmedia/go-debug
   version: ff4a55a20a86994118644bbddc6a216da193cc13
 - name: github.com/xtaci/kcp-go
-  version: 7112c1ca6856027af4d31ab3bb4f6cd09b47147a
+  version: e5eae44fad899b0f7568e82f703c40940c5fa9e9
 - name: github.com/xtaci/smux
-  version: ee8b5b54eb6ae629b30ee558310927d8981bb668
+  version: 60c611f2ff7411e1493071745a7f3f89e25ac624
 - name: golang.org/x/crypto
   version: 9477e0b78b9ac3d0b03822fd95422e2fe07627cd
   subpackages:
@@ -169,7 +170,7 @@ imports:
   - twofish
   - xtea
 - name: golang.org/x/net
-  version: 158696dc0dc66f3574e7e2abb8bbf02c65571307
+  version: 0e2717dc3cc05907dc23096ef3a9086ea93f567f
   subpackages:
   - bpf
   - context
