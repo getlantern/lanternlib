@@ -1,5 +1,5 @@
 hash: 61396f9cf05b67c1701b9df2cedebda5c550d9278e0f20507f08628e1a8089b0
-updated: 2016-11-10T21:19:04.145565343-08:00
+updated: 2016-11-11T16:46:53.944141082-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -52,7 +52,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 018bb330a23ef3cc92060e37fc683f449717e284
+  version: 4275d340b3312221200991f666ce084223ee84a7
   subpackages:
   - balancer
   - chained
@@ -151,7 +151,7 @@ imports:
 - name: github.com/visionmedia/go-debug
   version: ff4a55a20a86994118644bbddc6a216da193cc13
 - name: github.com/xtaci/kcp-go
-  version: e5eae44fad899b0f7568e82f703c40940c5fa9e9
+  version: 3f35e454a331a5ad69b071fbd2d927d003470509
 - name: github.com/xtaci/smux
   version: 60c611f2ff7411e1493071745a7f3f89e25ac624
 - name: golang.org/x/crypto
