@@ -13,7 +13,7 @@ const (
 )
 
 type Session interface {
-	UserId() int
+	GetUserID() int
 	Code() string
 	VerifyCode() string
 	DeviceCode() string
@@ -21,7 +21,7 @@ type Session interface {
 	DeviceName() string
 	Locale() string
 	Referral() string
-	Token() string
+	GetToken() string
 	Plan() string
 	StripeToken() string
 	StripeApiKey() string
@@ -62,8 +62,8 @@ func newRequest(shouldProxy bool, session Session) (*proRequest, error) {
 		user: client.User{
 			Auth: client.Auth{
 				DeviceID: session.DeviceId(),
-				ID:       session.UserId(),
-				Token:    session.Token(),
+				ID:       session.GetUserID(),
+				Token:    session.GetToken(),
 			},
 		},
 	}
@@ -77,7 +77,7 @@ func newuser(r *proRequest) (*client.Response, error) {
 	if err != nil {
 		log.Errorf("Could not create new Pro user: %v", err)
 	} else {
-		log.Debugf("Created new user with referral %s", res.User.Referral, res.User.Auth.Token, res.User.Auth.ID)
+		log.Debugf("Created new user with referral %s user id %v", res.User.Referral, res.User.Auth.ID)
 		r.session.SetUserId(res.User.Auth.ID)
 		r.session.SetToken(res.User.Auth.Token)
 		r.session.SetCode(res.User.Referral)
