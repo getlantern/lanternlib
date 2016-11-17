@@ -171,10 +171,6 @@ func run(configDir, locale string, user UserConfig) {
 	// already have in desktop)
 	logging.SetReportingEnabled(true)
 
-	log.Debugf("Token is %v user id is %v",
-		user.GetToken(),
-		user.GetUserID())
-
 	flashlight.Run("127.0.0.1:0", // listen for HTTP on random address
 		"127.0.0.1:0", // listen for SOCKS on random address
 		configDir,     // place to store lantern configuration
