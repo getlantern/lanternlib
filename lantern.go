@@ -89,9 +89,8 @@ type StartResult struct {
 }
 
 type UserConfig interface {
+	config.UserConfig
 	ConfigUpdate(bool)
-	GetToken() string
-	GetUserID() int64
 	AfterStart()
 	ShowSurvey(string)
 	BandwidthUpdate(int, int)

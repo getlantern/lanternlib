@@ -1,10 +1,10 @@
 hash: 61396f9cf05b67c1701b9df2cedebda5c550d9278e0f20507f08628e1a8089b0
-updated: 2016-11-11T16:46:53.944141082-08:00
+updated: 2016-11-17T08:17:43.293888127-05:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
 - name: git.torproject.org/pluggable-transports/obfs4.git
-  version: a9e8a62f9b914d872f0b83528c60f22bada0fcd1
+  version: 97a875ec3c0afa629405c78e750d27e4e1f851ca
   subpackages:
   - common/csrand
   - common/drbg
@@ -19,8 +19,6 @@ imports:
   subpackages:
   - edwards25519
   - extra25519
-- name: github.com/getlantern/go-socks5
-  version: 3f476a80db4ee5eeb28a7af7426f85b06ce33147
 - name: github.com/blang/semver
   version: 60ec3488bfea7cca02b021d106d9911120d25fe9
 - name: github.com/dchest/siphash
@@ -52,7 +50,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: b463ff5958306e04e481016fccc1695c703789c7
+  version: 3e8a25463e79e0e69abad1a48eff33c321dcb744
   subpackages:
   - balancer
   - chained
@@ -71,6 +69,8 @@ imports:
   version: 823d7ff3e6eb74dd6aae38a4b52207b19abfbf66
 - name: github.com/getlantern/go-loggly
   version: d15e28ab7389ed5d644ccb891d9d54154e43cd27
+- name: github.com/getlantern/go-socks5
+  version: 3f476a80db4ee5eeb28a7af7426f85b06ce33147
 - name: github.com/getlantern/go-update
   version: 4a06dc59e593012c831198e423894d2da1d091c0
   subpackages:
@@ -86,6 +86,8 @@ imports:
   version: e4b1cdde2256c2bb3871a7490bef9bd13532108f
 - name: github.com/getlantern/jibber_jabber
   version: 7346f98d2644252b9fc10b89af1f1858b2dc29b9
+- name: github.com/getlantern/kcp-go
+  version: c868f164cee00eff60f2aa06e235a6cd33b09b26
 - name: github.com/getlantern/keyman
   version: 2920ae3bb58d86b9170877b7ba75d78857354b8a
   subpackages:
@@ -145,15 +147,13 @@ imports:
 - name: github.com/pkg/errors
   version: 248dadf4e9068a0b3e79f02ed0a610d935de5302
 - name: github.com/stripe/stripe-go
-  version: e6f8840b669c4027f15720eac6d50a04d31eee76
+  version: 295fe5a1e0305a011b0b831ced6c7c2a9c76cba8
   subpackages:
   - orderitem
 - name: github.com/visionmedia/go-debug
   version: ff4a55a20a86994118644bbddc6a216da193cc13
-- name: github.com/xtaci/kcp-go
-  version: 3f35e454a331a5ad69b071fbd2d927d003470509
 - name: github.com/xtaci/smux
-  version: 60c611f2ff7411e1493071745a7f3f89e25ac624
+  version: b4a6fb87c6ff61e88833b551ce9247e09c9d71d2
 - name: golang.org/x/crypto
   version: 9477e0b78b9ac3d0b03822fd95422e2fe07627cd
   subpackages:
@@ -170,7 +170,7 @@ imports:
   - twofish
   - xtea
 - name: golang.org/x/net
-  version: 0e2717dc3cc05907dc23096ef3a9086ea93f567f
+  version: 4971afdc2f162e82d185353533d3cf16188a9f4e
   subpackages:
   - bpf
   - context
@@ -180,7 +180,7 @@ imports:
   - proxy
 testImports:
 - name: github.com/davecgh/go-spew
-  version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9
+  version: 04cdfd42973bb9c8589fd6a731800cf222fde1a9
   subpackages:
   - spew
 - name: github.com/pmezard/go-difflib
@@ -188,6 +188,6 @@ testImports:
   subpackages:
   - difflib
 - name: github.com/stretchr/testify
-  version: 976c720a22c8eb4eb6a0b4348ad85ad12491a506
+  version: 18a02ba4a312f95da08ff4cfc0055750ce50ae9e
   subpackages:
   - assert
