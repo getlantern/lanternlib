@@ -90,6 +90,8 @@ type StartResult struct {
 
 type UserConfig interface {
 	ConfigUpdate(bool)
+	GetToken() string
+	GetUserID() int64
 	AfterStart()
 	ShowSurvey(string)
 	BandwidthUpdate(int, int)
@@ -137,18 +139,6 @@ func AddLoggingMetadata(key, value string) {
 	logging.SetExtraLogglyInfo(key, value)
 }
 
-//userConfig supplies user data for fetching user-specific configuration.
-type userConfig struct {
-}
-
-func (uc *userConfig) GetToken() string {
-	return ""
-}
-
-func (uc *userConfig) GetUserID() int64 {
-	return 0
-}
-
 func run(configDir, locale string, user UserConfig) {
 	flags := map[string]interface{}{
 		"borda-report-interval":    5 * time.Minute,
@@ -181,6 +171,10 @@ func run(configDir, locale string, user UserConfig) {
 	// already have in desktop)
 	logging.SetReportingEnabled(true)
 
+	log.Debugf("Token is %v user id is %v",
+		user.GetToken(),
+		user.GetUserID())
+
 	flashlight.Run("127.0.0.1:0", // listen for HTTP on random address
 		"127.0.0.1:0", // listen for SOCKS on random address
 		configDir,     // place to store lantern configuration
@@ -197,7 +191,7 @@ func run(configDir, locale string, user UserConfig) {
 		func(cfg *config.Global) {
 			configUpdate(user, cfg)
 		}, // onConfigUpdate
-		&userConfig{},
+		user,
 		func(err error) {}, // onError
 		base64.StdEncoding.EncodeToString(uuid.NodeID()),
 	)
