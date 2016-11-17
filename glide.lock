@@ -52,7 +52,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: cf3951312c681bf8ada753139d15f9525fb16a06
+  version: b463ff5958306e04e481016fccc1695c703789c7
   subpackages:
   - balancer
   - chained
@@ -101,7 +101,7 @@ imports:
   subpackages:
   - go-client
 - name: github.com/getlantern/protected
-  version: b71bce31ee1925d8893c64b72715e0ebec8648d0
+  version: 641b935422b77331c602ea485daa282ed12e8575
 - name: github.com/getlantern/proxiedsites
   version: 996122c1374578a85a536445d7d7ae88d3ee5a35
 - name: github.com/getlantern/proxy

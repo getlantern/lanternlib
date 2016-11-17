@@ -90,6 +90,8 @@ type StartResult struct {
 
 type UserConfig interface {
 	ConfigUpdate(bool)
+	GetToken() string
+	GetUserID() int64
 	AfterStart()
 	ShowSurvey(string)
 	BandwidthUpdate(int, int)
@@ -135,18 +137,6 @@ func Start(configDir string, locale string, timeoutMillis int, user UserConfig) 
 // AddLoggingMetadata adds metadata for reporting to cloud logging services
 func AddLoggingMetadata(key, value string) {
 	logging.SetExtraLogglyInfo(key, value)
-}
-
-//userConfig supplies user data for fetching user-specific configuration.
-type userConfig struct {
-}
-
-func (uc *userConfig) GetToken() string {
-	return ""
-}
-
-func (uc *userConfig) GetUserID() int64 {
-	return 0
 }
 
 func run(configDir, locale string, user UserConfig) {
@@ -197,7 +187,7 @@ func run(configDir, locale string, user UserConfig) {
 		func(cfg *config.Global) {
 			configUpdate(user, cfg)
 		}, // onConfigUpdate
-		&userConfig{},
+		user,
 		func(err error) {}, // onError
 		base64.StdEncoding.EncodeToString(uuid.NodeID()),
 	)
