@@ -1,5 +1,5 @@
 hash: 61396f9cf05b67c1701b9df2cedebda5c550d9278e0f20507f08628e1a8089b0
-updated: 2016-11-22T13:05:30.221756643-08:00
+updated: 2016-11-29T10:24:40.58751855-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -20,7 +20,7 @@ imports:
   - edwards25519
   - extra25519
 - name: github.com/blang/semver
-  version: 60ec3488bfea7cca02b021d106d9911120d25fe9
+  version: 99c25b2dbb9b8a6389fab5fb785ee7428a7a6ab8
 - name: github.com/dchest/siphash
   version: 4ebf1de738443ea7f45f02dc394c4df1942a126d
 - name: github.com/fatih/set
@@ -32,13 +32,13 @@ imports:
 - name: github.com/getlantern/bandwidth
   version: 96de96fff16cf1aa844edc1b4a72c906add83180
 - name: github.com/getlantern/borda
-  version: 0fb2fec281c01f1ea7012358dbf3c943154e076d
+  version: 6902e0924975d5f5d230df9b2b8907b0d96cd084
   subpackages:
   - client
 - name: github.com/getlantern/byteexec
   version: 2e21fedeb225921a8dc40321cbd114ffd0a302f3
 - name: github.com/getlantern/cmux
-  version: a4b70ed0dc7b067cf3ed7658c52ed4c3e43c2877
+  version: 2fd2149c1fc710b18a84bbd3f221ce53d45eaee3
 - name: github.com/getlantern/context
   version: 624d99b1798d7c5375ea1d3ca4c5b04d58f7c775
 - name: github.com/getlantern/detour
@@ -50,7 +50,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 5cb892263751dd6dcc5da286aa5fd8a46fc225ce
+  version: b3ee2310f48e924e4f4b88a0334964b5b023a53b
   subpackages:
   - balancer
   - chained
@@ -86,10 +86,8 @@ imports:
   version: e4b1cdde2256c2bb3871a7490bef9bd13532108f
 - name: github.com/getlantern/jibber_jabber
   version: 7346f98d2644252b9fc10b89af1f1858b2dc29b9
-- name: github.com/getlantern/kcp-go
-  version: c868f164cee00eff60f2aa06e235a6cd33b09b26
 - name: github.com/getlantern/keyman
-  version: 2920ae3bb58d86b9170877b7ba75d78857354b8a
+  version: 10caeb5133f874e91d12e9b256f6e316dfaa5ae0
   subpackages:
   - certimporter
 - name: github.com/getlantern/netx
@@ -109,11 +107,13 @@ imports:
 - name: github.com/getlantern/proxy
   version: 24caf02f302602f57f8202834d5c87e1203b29f3
 - name: github.com/getlantern/proxybench
-  version: 9ed86c82bc7dccf4360f60dbe4351230c44f2ac4
+  version: 93604a4e1637ba8063f22f478d302bd883f89127
 - name: github.com/getlantern/rot13
   version: 33f93fc1fe85c042c0667a1814e6379bd5e7eb40
 - name: github.com/getlantern/rotator
   version: 013d4f8e36a2f6369b2435d89866056b5b74c69e
+- name: github.com/getlantern/smux
+  version: f28ad8639045f200efc98a9d7039c17a204ab9c2
 - name: github.com/getlantern/snappyconn
   version: d99ceb334e5503f023b658b83083aff6521d67ed
 - name: github.com/getlantern/stack
@@ -147,13 +147,13 @@ imports:
 - name: github.com/pkg/errors
   version: 248dadf4e9068a0b3e79f02ed0a610d935de5302
 - name: github.com/stripe/stripe-go
-  version: 295fe5a1e0305a011b0b831ced6c7c2a9c76cba8
+  version: a34c407200879c4c1885b4289f2e1d459b450976
   subpackages:
   - orderitem
 - name: github.com/visionmedia/go-debug
   version: ff4a55a20a86994118644bbddc6a216da193cc13
-- name: github.com/xtaci/smux
-  version: b4a6fb87c6ff61e88833b551ce9247e09c9d71d2
+- name: github.com/xtaci/kcp-go
+  version: 51f71b5739aea667f9a8ef34c806f50d8cd8238d
 - name: golang.org/x/crypto
   version: ede567c8e044a5913dad1d1af3696d9da953104c
   subpackages:
