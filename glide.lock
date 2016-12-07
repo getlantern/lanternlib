@@ -1,5 +1,5 @@
 hash: 61396f9cf05b67c1701b9df2cedebda5c550d9278e0f20507f08628e1a8089b0
-updated: 2016-11-30T09:27:08.042631033-08:00
+updated: 2016-12-07T13:13:53.157417428-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -50,7 +50,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: d34690ddbb2dc41f7257db1867c92f4875556e68
+  version: 056f3af638fefc29dece3a3a349daeaf66916e80
   subpackages:
   - balancer
   - chained
@@ -139,13 +139,13 @@ imports:
 - name: github.com/kr/binarydist
   version: 3035450ff8b987ec4373f65c40767f096b35f2d2
 - name: github.com/miekg/dns
-  version: 271c58e0c14f552178ea321a545ff9af38930f39
+  version: f4d2b086946a624202dc59e6a43f72e8f3f02bc1
 - name: github.com/oxtoacart/bpool
   version: 4e1c5567d7c2dd59fa4c7c83d34c2f3528b025d6
 - name: github.com/pkg/errors
   version: 248dadf4e9068a0b3e79f02ed0a610d935de5302
 - name: github.com/stripe/stripe-go
-  version: a34c407200879c4c1885b4289f2e1d459b450976
+  version: f8d31de939009efc415c270a723dc5781472ed13
   subpackages:
   - orderitem
 - name: github.com/visionmedia/go-debug
@@ -155,7 +155,7 @@ imports:
 - name: github.com/xtaci/smux
   version: 427dd804ce9fb0a9e7b27a628f68a124fb0d67a6
 - name: golang.org/x/crypto
-  version: ede567c8e044a5913dad1d1af3696d9da953104c
+  version: 3f77d695175f990a2967385c493939f380ee40a3
   subpackages:
   - blowfish
   - cast5
@@ -170,7 +170,7 @@ imports:
   - twofish
   - xtea
 - name: golang.org/x/net
-  version: 4971afdc2f162e82d185353533d3cf16188a9f4e
+  version: 9773060888fba93b172cedcd70127db1ab739bd1
   subpackages:
   - bpf
   - context
