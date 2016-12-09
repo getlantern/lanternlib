@@ -227,6 +227,16 @@ func userdata(r *proRequest) (*client.Response, error) {
 	return res, err
 }
 
+func userupdate(r *proRequest) (*client.Response, error) {
+	res, err := r.proClient.UserUpdate(r.user)
+	if err != nil {
+		log.Errorf("Error making user update request: %v", err)
+		return res, err
+	}
+	log.Debugf("Got existing user: %v", res.User)
+	return res, err
+}
+
 func RemoveDevice(shouldProxy bool, deviceId string, session Session) bool {
 	req, err := newRequest(shouldProxy, session)
 	if err != nil {
@@ -283,6 +293,7 @@ func ProRequest(shouldProxy bool, command string, session Session) bool {
 		"requestcode": requestcode,
 		"userdata":    userdata,
 		"userrecover": userrecover,
+		"userupdate":  userupdate,
 		"verifycode":  verifycode,
 		"referral":    referral,
 		"cancel":      cancel,
