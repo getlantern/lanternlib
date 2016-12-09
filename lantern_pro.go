@@ -228,7 +228,7 @@ func userdata(r *proRequest) (*client.Response, error) {
 }
 
 func userupdate(r *proRequest) (*client.Response, error) {
-	res, err := r.proClient.UserUpdate(r.user)
+	res, err := r.proClient.UserUpdate(r.user, r.session.Email())
 	if err != nil {
 		log.Errorf("Error making user update request: %v", err)
 		return res, err
