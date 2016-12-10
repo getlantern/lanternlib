@@ -228,12 +228,12 @@ func userdata(r *proRequest) (*client.Response, error) {
 }
 
 func userupdate(r *proRequest) (*client.Response, error) {
-	res, err := r.proClient.UserUpdate(r.user, r.session.Email())
+	res, userId, err := r.proClient.UserUpdate(r.user, r.session.Email())
 	if err != nil {
 		log.Errorf("Error making user update request: %v", err)
-	} else {
+	} else if userId != 0 {
 		r.session.SetToken(res.User.Auth.Token)
-		r.session.SetUserId(res.User.Auth.ID)
+		r.session.SetUserId(userId)
 	}
 	return res, err
 }
