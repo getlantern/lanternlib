@@ -231,9 +231,10 @@ func userupdate(r *proRequest) (*client.Response, error) {
 	res, err := r.proClient.UserUpdate(r.user, r.session.Email())
 	if err != nil {
 		log.Errorf("Error making user update request: %v", err)
-		return res, err
+	} else {
+		r.session.SetToken(res.User.Auth.Token)
+		r.session.SetUserId(res.User.Auth.ID)
 	}
-	log.Debugf("Got existing user: %v", res.User)
 	return res, err
 }
 
