@@ -1,5 +1,5 @@
 hash: 61396f9cf05b67c1701b9df2cedebda5c550d9278e0f20507f08628e1a8089b0
-updated: 2016-12-07T13:13:53.157417428-08:00
+updated: 2016-12-12T12:53:07.459125819-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -32,7 +32,7 @@ imports:
 - name: github.com/getlantern/bandwidth
   version: 96de96fff16cf1aa844edc1b4a72c906add83180
 - name: github.com/getlantern/borda
-  version: 6902e0924975d5f5d230df9b2b8907b0d96cd084
+  version: eaec6a1bff74b4de41e721e869341c3624e4e798
   subpackages:
   - client
 - name: github.com/getlantern/byteexec
@@ -50,7 +50,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 056f3af638fefc29dece3a3a349daeaf66916e80
+  version: 45b24c5e65d3b0638eda724b25e24262479c5d4b
   subpackages:
   - balancer
   - chained
@@ -97,7 +97,7 @@ imports:
 - name: github.com/getlantern/osversion
   version: 4aedc380e3bab4f0c97b1481492cb0b81c1d91f9
 - name: github.com/getlantern/pro-server-client
-  version: 27fd4156e48e292ab7003ec6fc8e48db18a9782d
+  version: 35359203128874ed42d6194728c002950d67df59
   subpackages:
   - go-client
 - name: github.com/getlantern/protected
@@ -139,13 +139,13 @@ imports:
 - name: github.com/kr/binarydist
   version: 3035450ff8b987ec4373f65c40767f096b35f2d2
 - name: github.com/miekg/dns
-  version: f4d2b086946a624202dc59e6a43f72e8f3f02bc1
+  version: 4744e915eb51a9defb5fb13c24ce2c8408d2fd98
 - name: github.com/oxtoacart/bpool
   version: 4e1c5567d7c2dd59fa4c7c83d34c2f3528b025d6
 - name: github.com/pkg/errors
   version: 248dadf4e9068a0b3e79f02ed0a610d935de5302
 - name: github.com/stripe/stripe-go
-  version: f8d31de939009efc415c270a723dc5781472ed13
+  version: c49cef41dc0a5232570890d139748140a76d1f6e
   subpackages:
   - orderitem
 - name: github.com/visionmedia/go-debug
@@ -155,7 +155,7 @@ imports:
 - name: github.com/xtaci/smux
   version: 427dd804ce9fb0a9e7b27a628f68a124fb0d67a6
 - name: golang.org/x/crypto
-  version: 3f77d695175f990a2967385c493939f380ee40a3
+  version: 9a6f0a01987842989747adff311d80750ba25530
   subpackages:
   - blowfish
   - cast5
@@ -170,7 +170,7 @@ imports:
   - twofish
   - xtea
 - name: golang.org/x/net
-  version: 9773060888fba93b172cedcd70127db1ab739bd1
+  version: b1a2d6e8c8b5fc8f601ead62536f02a8e1b6217d
   subpackages:
   - bpf
   - context
