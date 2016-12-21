@@ -1,5 +1,5 @@
-hash: 61396f9cf05b67c1701b9df2cedebda5c550d9278e0f20507f08628e1a8089b0
-updated: 2016-12-12T13:28:12.331039292-08:00
+hash: 8e766771372689abc4a97ee7a33f3269b9873de5bbde83844f93a42b6c3c615e
+updated: 2016-12-21T12:42:42.424317642-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -32,13 +32,13 @@ imports:
 - name: github.com/getlantern/bandwidth
   version: 96de96fff16cf1aa844edc1b4a72c906add83180
 - name: github.com/getlantern/borda
-  version: eaec6a1bff74b4de41e721e869341c3624e4e798
+  version: 7f4e9eb4a9257ac45a31b1d9c8de0d602c43d6a2
   subpackages:
   - client
 - name: github.com/getlantern/byteexec
   version: 2e21fedeb225921a8dc40321cbd114ffd0a302f3
 - name: github.com/getlantern/cmux
-  version: d5cfc0da5b6953f5feba862455df741c204db719
+  version: 28e8bb95109fb227116226ae6f3a0890a3bd78e3
 - name: github.com/getlantern/context
   version: 624d99b1798d7c5375ea1d3ca4c5b04d58f7c775
 - name: github.com/getlantern/detour
@@ -50,9 +50,10 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 8ba20719981ca406837c55e9467f0c2fa0371e79
+  version: f940a18aba95ff113d1f52b814beeaaaf75ba94c
   subpackages:
   - balancer
+  - borda
   - chained
   - client
   - config
@@ -70,7 +71,7 @@ imports:
 - name: github.com/getlantern/go-loggly
   version: d15e28ab7389ed5d644ccb891d9d54154e43cd27
 - name: github.com/getlantern/go-socks5
-  version: 3f476a80db4ee5eeb28a7af7426f85b06ce33147
+  version: 84bc9224d653efa66ce1f5f01097b9d38fcc3f34
 - name: github.com/getlantern/go-update
   version: 4a06dc59e593012c831198e423894d2da1d091c0
   subpackages:
@@ -90,6 +91,8 @@ imports:
   version: 10caeb5133f874e91d12e9b256f6e316dfaa5ae0
   subpackages:
   - certimporter
+- name: github.com/getlantern/measured
+  version: 9abc2622c88edcbe1436a80e69f912b3ccfc73bf
 - name: github.com/getlantern/netx
   version: 73cb70f5b027da6ee8c87c4c5a21b78e7cf8e9ce
 - name: github.com/getlantern/ops
@@ -105,13 +108,15 @@ imports:
 - name: github.com/getlantern/proxiedsites
   version: 996122c1374578a85a536445d7d7ae88d3ee5a35
 - name: github.com/getlantern/proxy
-  version: 24caf02f302602f57f8202834d5c87e1203b29f3
+  version: c8f6ac63518c52fde7f627aeafd04ed968f6a9ff
 - name: github.com/getlantern/proxybench
-  version: 93604a4e1637ba8063f22f478d302bd883f89127
+  version: 9eb1a7eb9ee31fccec14a89db42863e10c51460f
 - name: github.com/getlantern/rot13
   version: 33f93fc1fe85c042c0667a1814e6379bd5e7eb40
 - name: github.com/getlantern/rotator
   version: 013d4f8e36a2f6369b2435d89866056b5b74c69e
+- name: github.com/getlantern/smux
+  version: c1f29b44d895837d941715ec7248896693c177fc
 - name: github.com/getlantern/snappyconn
   version: d99ceb334e5503f023b658b83083aff6521d67ed
 - name: github.com/getlantern/stack
@@ -139,7 +144,7 @@ imports:
 - name: github.com/kr/binarydist
   version: 3035450ff8b987ec4373f65c40767f096b35f2d2
 - name: github.com/miekg/dns
-  version: 4744e915eb51a9defb5fb13c24ce2c8408d2fd98
+  version: 4f8d08ab3c3f260afc934e9baf564bede5795458
 - name: github.com/oxtoacart/bpool
   version: 4e1c5567d7c2dd59fa4c7c83d34c2f3528b025d6
 - name: github.com/pkg/errors
@@ -151,11 +156,9 @@ imports:
 - name: github.com/visionmedia/go-debug
   version: ff4a55a20a86994118644bbddc6a216da193cc13
 - name: github.com/xtaci/kcp-go
-  version: 1a8d8c1d4fb43cee8cfc32fa464d2592a2923f1a
-- name: github.com/xtaci/smux
-  version: 427dd804ce9fb0a9e7b27a628f68a124fb0d67a6
+  version: a67e3a7cf5693b99b8b5415b66e4c0d067631dac
 - name: golang.org/x/crypto
-  version: 9a6f0a01987842989747adff311d80750ba25530
+  version: f5719d24587163700c5f7fa625ef3e05d9b372e7
   subpackages:
   - blowfish
   - cast5
@@ -170,7 +173,9 @@ imports:
   - twofish
   - xtea
 - name: golang.org/x/net
-  version: b1a2d6e8c8b5fc8f601ead62536f02a8e1b6217d
+  version: 45e771701b814666a7eb299e6c7a57d0b1799e91
+  repo: https://github.com/golang/net
+  vcs: git
   subpackages:
   - bpf
   - context
@@ -188,6 +193,6 @@ testImports:
   subpackages:
   - difflib
 - name: github.com/stretchr/testify
-  version: 18a02ba4a312f95da08ff4cfc0055750ce50ae9e
+  version: 2402e8e7a02fc811447d11f881aa9746cdc57983
   subpackages:
   - assert
