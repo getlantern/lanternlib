@@ -165,16 +165,14 @@ func run(configDir, locale string, user UserConfig) {
 		log.Errorf("Error parsing boolean flag: %v", err)
 	}
 
-	// Need to manually enable logging since we don't have settings in Mobile
-	// TODO: allow configuring whether or not to enable reporting (just like we
-	// already have in desktop)
-	logging.SetReportingEnabled(true)
-
 	flashlight.Run("127.0.0.1:0", // listen for HTTP on random address
 		"127.0.0.1:0", // listen for SOCKS on random address
 		configDir,     // place to store lantern configuration
 		false,         // don't make config sticky
 		func() bool { return true }, // proxy all requests
+		// TODO: allow configuring whether or not to enable reporting (just like we
+		// already have in desktop)
+		func() bool { return true }, // auto report
 		flags,
 		func() bool {
 			//beforeStart(user)
