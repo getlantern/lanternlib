@@ -12,10 +12,12 @@ import:
   - proxied
 - package: github.com/getlantern/golog
 - package: github.com/getlantern/netx
+  version: 73cb70f
 - package: github.com/getlantern/pro-server-client
   subpackages:
   - go-client
 - package: github.com/getlantern/protected
+  version: 07a78fc
 - package: github.com/getlantern/uuid
 - package: github.com/stripe/stripe-go
 testImport:

@@ -91,7 +91,7 @@ imports:
   subpackages:
   - certimporter
 - name: github.com/getlantern/netx
-  version: 70375a276c57e76c1fe1e2fbdb4c2d2714a67b39
+  version: 73cb70f5b027da6ee8c87c4c5a21b78e7cf8e9ce
 - name: github.com/getlantern/ops
   version: b70875f5d689a9438bca72aefd7142a2af889b18
 - name: github.com/getlantern/osversion
@@ -101,7 +101,7 @@ imports:
   subpackages:
   - go-client
 - name: github.com/getlantern/protected
-  version: 641b935422b77331c602ea485daa282ed12e8575
+  version: 07a78fc79a16cf6f56ef153bec7f602ad420e053
 - name: github.com/getlantern/proxiedsites
   version: 996122c1374578a85a536445d7d7ae88d3ee5a35
 - name: github.com/getlantern/proxy

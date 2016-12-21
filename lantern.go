@@ -62,7 +62,7 @@ type SocketProtector interface {
 // resulting in an infinite loop.
 func ProtectConnections(dnsServer string, protector SocketProtector) {
 	p := protected.New(protector.ProtectConn, dnsServer)
-	netx.OverrideDial(p.Dial)
+	netx.OverrideDial(p.DialContext)
 	netx.OverrideResolve(p.Resolve)
 }
 
