@@ -1,5 +1,5 @@
 hash: 8e766771372689abc4a97ee7a33f3269b9873de5bbde83844f93a42b6c3c615e
-updated: 2016-12-23T11:52:03.254633271-08:00
+updated: 2016-12-31T13:40:33.353901076-06:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -50,7 +50,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: c6b5eb347625b0d7cf7195d0e5cfe3e8c2172f21
+  version: 6370a3e5e58750593eb08296d4d3a6f1f165a371
   subpackages:
   - balancer
   - borda
@@ -108,7 +108,7 @@ imports:
 - name: github.com/getlantern/proxiedsites
   version: 996122c1374578a85a536445d7d7ae88d3ee5a35
 - name: github.com/getlantern/proxy
-  version: a63bbdfe501ac74ac8bb4927d75c8c34bad55e79
+  version: 10918aeb0aa91dd11f869b81a57a48de73182c90
 - name: github.com/getlantern/proxybench
   version: 9eb1a7eb9ee31fccec14a89db42863e10c51460f
 - name: github.com/getlantern/rot13
