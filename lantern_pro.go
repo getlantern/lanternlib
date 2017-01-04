@@ -90,15 +90,18 @@ func purchase(r *proRequest) (*client.Response, error) {
 
 	purchase := client.Purchase{
 		IdempotencyKey: stripe.NewIdempotencyKey(),
+		StripeToken:    r.session.StripeToken(),
+		StripeEmail:    r.session.Email(),
 		Provider:       r.session.Provider(),
 		ResellerCode:   r.session.ResellerCode(),
 		Email:          r.session.Email(),
 		Plan:           r.session.Plan(),
 		Currency:       strings.ToLower(r.session.Currency()),
 	}
+	pubKey := r.session.StripeApiKey()
 	deviceName := r.session.DeviceName()
 
-	return r.proClient.Purchase(r.user, deviceName, purchase)
+	return r.proClient.Purchase(r.user, deviceName, pubKey, purchase)
 }
 
 func requestcode(r *proRequest) (*client.Response, error) {
