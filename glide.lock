@@ -100,7 +100,7 @@ imports:
 - name: github.com/getlantern/osversion
   version: 4aedc380e3bab4f0c97b1481492cb0b81c1d91f9
 - name: github.com/getlantern/pro-server-client
-  version: 518a454821272e2d0f5372f7958ac2f84243938d
+  version: 5bd34c563ce1a2d8f39f85ee2158af907a4edc84
   subpackages:
   - go-client
 - name: github.com/getlantern/protected

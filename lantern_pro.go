@@ -25,6 +25,7 @@ type Session interface {
 	Plan() string
 	Provider() string
 	ResellerCode() string
+	StripeToken() string
 	StripeApiKey() string
 	Email() string
 	AccountId() string
@@ -38,6 +39,7 @@ type Session interface {
 	SetError(string, string)
 	SetErrorId(string, string)
 	Currency() string
+	SetStripePubKey(string)
 	AddPlan(string, string, string, bool, int, int)
 	AddDevice(string, string)
 }
@@ -89,15 +91,18 @@ func purchase(r *proRequest) (*client.Response, error) {
 
 	purchase := client.Purchase{
 		IdempotencyKey: stripe.NewIdempotencyKey(),
+		StripeToken:    r.session.StripeToken(),
+		StripeEmail:    r.session.Email(),
 		Provider:       r.session.Provider(),
 		ResellerCode:   r.session.ResellerCode(),
 		Email:          r.session.Email(),
 		Plan:           r.session.Plan(),
 		Currency:       strings.ToLower(r.session.Currency()),
 	}
+	pubKey := r.session.StripeApiKey()
 	deviceName := r.session.DeviceName()
 
-	return r.proClient.Purchase(r.user, deviceName, purchase)
+	return r.proClient.Purchase(r.user, deviceName, pubKey, purchase)
 }
 
 func requestcode(r *proRequest) (*client.Response, error) {
@@ -178,6 +183,7 @@ func plans(r *proRequest) (*client.Response, error) {
 	if err != nil || len(res.Plans) == 0 {
 		return res, err
 	}
+	r.session.SetStripePubKey(res.PubKey)
 	for _, plan := range res.Plans {
 		var currency string
 		var price int
