@@ -25,6 +25,7 @@ type Session interface {
 	Plan() string
 	Provider() string
 	ResellerCode() string
+	StripeToken() string
 	StripeApiKey() string
 	Email() string
 	AccountId() string
