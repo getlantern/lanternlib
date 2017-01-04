@@ -38,6 +38,7 @@ type Session interface {
 	SetError(string, string)
 	SetErrorId(string, string)
 	Currency() string
+	SetStripePubKey(string)
 	AddPlan(string, string, string, bool, int, int)
 	AddDevice(string, string)
 }
@@ -178,6 +179,7 @@ func plans(r *proRequest) (*client.Response, error) {
 	if err != nil || len(res.Plans) == 0 {
 		return res, err
 	}
+	r.session.SetStripePubKey(res.PubKey)
 	for _, plan := range res.Plans {
 		var currency string
 		var price int
