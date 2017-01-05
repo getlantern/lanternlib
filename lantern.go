@@ -20,7 +20,6 @@ import (
 	"github.com/getlantern/flashlight"
 	"github.com/getlantern/flashlight/client"
 	"github.com/getlantern/flashlight/config"
-	"github.com/getlantern/flashlight/logging"
 	"github.com/getlantern/flashlight/proxied"
 	"github.com/getlantern/golog"
 	"github.com/getlantern/netx"
@@ -135,7 +134,7 @@ func Start(configDir string, locale string, timeoutMillis int, user UserConfig) 
 
 // AddLoggingMetadata adds metadata for reporting to cloud logging services
 func AddLoggingMetadata(key, value string) {
-	logging.SetExtraLogglyInfo(key, value)
+	//logging.SetExtraLogglyInfo(key, value)
 }
 
 func run(configDir, locale string, user UserConfig) {
@@ -152,10 +151,6 @@ func run(configDir, locale string, user UserConfig) {
 		return
 	}
 
-	if logErr := logging.EnableFileLogging(configDir); logErr != nil {
-		log.Errorf("Unable to enable file logging: %v", logErr)
-		return
-	}
 	log.Debugf("Writing log messages to %s/lantern.log", configDir)
 
 	staging, err := strconv.ParseBool(stagingMode)
