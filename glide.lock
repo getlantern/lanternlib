@@ -1,5 +1,5 @@
 hash: 8e766771372689abc4a97ee7a33f3269b9873de5bbde83844f93a42b6c3c615e
-updated: 2017-01-02T10:00:14.145123087-06:00
+updated: 2017-01-04T16:12:28.660311765-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -43,6 +43,8 @@ imports:
   version: 624d99b1798d7c5375ea1d3ca4c5b04d58f7c775
 - name: github.com/getlantern/detour
   version: e326e9a1f33a0ecfaac6726cb78fc0c77aada064
+- name: github.com/getlantern/ema
+  version: d1779dcfb929ca9c80a3bbbf8707462c964e4fdf
 - name: github.com/getlantern/errors
   version: 99fa440517e8f3d1e4cd8d6dbed6b41f4c1ed3d6
 - name: github.com/getlantern/eventual
@@ -50,7 +52,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 725dcc8fd6f02e7565042d14a61cf69fdeb26036
+  version: 471ecbb61b100b6ddd9a908d7f97d92e36b21dea
   subpackages:
   - balancer
   - borda
@@ -68,8 +70,6 @@ imports:
   version: 0fa5677c45d4bac8311197a2962e630eda1304a8
 - name: github.com/getlantern/geolookup
   version: 823d7ff3e6eb74dd6aae38a4b52207b19abfbf66
-- name: github.com/getlantern/go-loggly
-  version: d15e28ab7389ed5d644ccb891d9d54154e43cd27
 - name: github.com/getlantern/go-socks5
   version: 84bc9224d653efa66ce1f5f01097b9d38fcc3f34
 - name: github.com/getlantern/go-update
@@ -91,8 +91,6 @@ imports:
   version: 10caeb5133f874e91d12e9b256f6e316dfaa5ae0
   subpackages:
   - certimporter
-- name: github.com/getlantern/measured
-  version: 9abc2622c88edcbe1436a80e69f912b3ccfc73bf
 - name: github.com/getlantern/netx
   version: 73cb70f5b027da6ee8c87c4c5a21b78e7cf8e9ce
 - name: github.com/getlantern/ops
@@ -110,7 +108,7 @@ imports:
 - name: github.com/getlantern/proxy
   version: 876829e39cf8243d123b02f02efe8da1266effb4
 - name: github.com/getlantern/proxybench
-  version: a341b7f04dcd840aa790940396152bd108bfd1e4
+  version: 1a066df1c135fde177d538937d17b11434f7cdb2
 - name: github.com/getlantern/rot13
   version: 33f93fc1fe85c042c0667a1814e6379bd5e7eb40
 - name: github.com/getlantern/rotator
@@ -144,21 +142,19 @@ imports:
 - name: github.com/kr/binarydist
   version: 3035450ff8b987ec4373f65c40767f096b35f2d2
 - name: github.com/miekg/dns
-  version: 00b8eaaab9411e1ff61e5030ef7e58bed412ad2a
+  version: ca336a1f95a6b89be9c250df26c7a41742eb4a6f
 - name: github.com/oxtoacart/bpool
   version: 4e1c5567d7c2dd59fa4c7c83d34c2f3528b025d6
 - name: github.com/pkg/errors
   version: 248dadf4e9068a0b3e79f02ed0a610d935de5302
 - name: github.com/stripe/stripe-go
-  version: c49cef41dc0a5232570890d139748140a76d1f6e
+  version: 87c04229ff0262e4e7dfc8af7dc97a471e955ba2
   subpackages:
   - orderitem
-- name: github.com/visionmedia/go-debug
-  version: ff4a55a20a86994118644bbddc6a216da193cc13
 - name: github.com/xtaci/kcp-go
   version: 1a20d38aba9b713cbf9088d04b39207be1ca4d58
 - name: golang.org/x/crypto
-  version: f6b343c37ca80bfa8ea539da67a0b621f84fab1d
+  version: 5b4074c2c416448b5d06e287167144493aabda43
   subpackages:
   - blowfish
   - cast5
@@ -173,7 +169,7 @@ imports:
   - twofish
   - xtea
 - name: golang.org/x/net
-  version: 8fd7f25955530b92e73e9e1932a41b522b22ccd9
+  version: 69d4b8aa71caaaa75c3dfc11211d1be495abec7c
   repo: https://github.com/golang/net
   vcs: git
   subpackages:
