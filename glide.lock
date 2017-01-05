@@ -1,5 +1,5 @@
-hash: 8e766771372689abc4a97ee7a33f3269b9873de5bbde83844f93a42b6c3c615e
-updated: 2017-01-04T16:12:28.660311765-08:00
+hash: b0ef14e8b64c00e697f286def88734423a8af90918a3da6ee8d59cc0e53d2768
+updated: 2017-01-05T09:43:43.51679109-06:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -19,6 +19,10 @@ imports:
   subpackages:
   - edwards25519
   - extra25519
+- name: github.com/aristanetworks/goarista
+  version: 34c98d5e5f9b0c0a627fb48fd28ec6392dae5dbf
+  subpackages:
+  - monotime
 - name: github.com/blang/semver
   version: 3a37c301dda64cbe17f16f661b4c976803c0e2d2
 - name: github.com/dchest/siphash
@@ -44,7 +48,7 @@ imports:
 - name: github.com/getlantern/detour
   version: e326e9a1f33a0ecfaac6726cb78fc0c77aada064
 - name: github.com/getlantern/ema
-  version: d1779dcfb929ca9c80a3bbbf8707462c964e4fdf
+  version: dc05f6bb97276a219b5766209d734561b54ff505
 - name: github.com/getlantern/errors
   version: 99fa440517e8f3d1e4cd8d6dbed6b41f4c1ed3d6
 - name: github.com/getlantern/eventual
@@ -52,7 +56,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 471ecbb61b100b6ddd9a908d7f97d92e36b21dea
+  version: ce6ca86fcc0c449a59e4f4df76b1a76f0556a145
   subpackages:
   - balancer
   - borda
@@ -91,6 +95,8 @@ imports:
   version: 10caeb5133f874e91d12e9b256f6e316dfaa5ae0
   subpackages:
   - certimporter
+- name: github.com/getlantern/mtime
+  version: d72d3a6a0287edd061376f7d093de37cf18709af
 - name: github.com/getlantern/netx
   version: 73cb70f5b027da6ee8c87c4c5a21b78e7cf8e9ce
 - name: github.com/getlantern/ops
@@ -108,7 +114,7 @@ imports:
 - name: github.com/getlantern/proxy
   version: 876829e39cf8243d123b02f02efe8da1266effb4
 - name: github.com/getlantern/proxybench
-  version: 1a066df1c135fde177d538937d17b11434f7cdb2
+  version: b44c2c020773279f8ad1219712f256cfaf700885
 - name: github.com/getlantern/rot13
   version: 33f93fc1fe85c042c0667a1814e6379bd5e7eb40
 - name: github.com/getlantern/rotator
@@ -138,7 +144,7 @@ imports:
 - name: github.com/klauspost/crc32
   version: cb6bfca970f6908083f26f39a79009d608efd5cd
 - name: github.com/klauspost/reedsolomon
-  version: d0a56f72c0d40a6cdde43a1575ad9686a0098b70
+  version: c056598956acbb4a085b3c23914415937b3335e5
 - name: github.com/kr/binarydist
   version: 3035450ff8b987ec4373f65c40767f096b35f2d2
 - name: github.com/miekg/dns
