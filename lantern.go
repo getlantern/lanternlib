@@ -22,6 +22,7 @@ import (
 	"github.com/getlantern/flashlight/config"
 	"github.com/getlantern/flashlight/proxied"
 	"github.com/getlantern/golog"
+	"github.com/getlantern/mtime"
 	"github.com/getlantern/netx"
 	"github.com/getlantern/protected"
 	"github.com/getlantern/uuid"
@@ -118,14 +119,13 @@ func Start(configDir string, locale string, timeoutMillis int, user UserConfig) 
 		go run(configDir, locale, user)
 	})
 
-	start := time.Now()
+	elapsed := mtime.Stopwatch()
 	addr, ok := client.Addr(time.Duration(timeoutMillis) * time.Millisecond)
 	if !ok {
 		return nil, fmt.Errorf("HTTP Proxy didn't start within given timeout")
 	}
-	elapsed := time.Now().Sub(start)
 
-	socksAddr, ok := client.Socks5Addr((time.Duration(timeoutMillis) * time.Millisecond) - elapsed)
+	socksAddr, ok := client.Socks5Addr((time.Duration(timeoutMillis) * time.Millisecond) - elapsed())
 	if !ok {
 		return nil, fmt.Errorf("SOCKS5 Proxy didn't start within given timeout")
 	}
