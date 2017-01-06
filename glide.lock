@@ -1,5 +1,5 @@
 hash: b0ef14e8b64c00e697f286def88734423a8af90918a3da6ee8d59cc0e53d2768
-updated: 2017-01-05T09:43:43.51679109-06:00
+updated: 2017-01-06T14:06:24.530345739-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -56,7 +56,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: ce6ca86fcc0c449a59e4f4df76b1a76f0556a145
+  version: 14940fa20c3ddce2a30ab7bbc6f2d88240b2c128
   subpackages:
   - balancer
   - borda
@@ -88,7 +88,7 @@ imports:
 - name: github.com/getlantern/hidden
   version: d52a649ab33af200943bb599898dbdcfdbc94cb7
 - name: github.com/getlantern/idletiming
-  version: e4b1cdde2256c2bb3871a7490bef9bd13532108f
+  version: 521cf3c8fb0ab598655e9357f2e7dedde9557ffc
 - name: github.com/getlantern/jibber_jabber
   version: 7346f98d2644252b9fc10b89af1f1858b2dc29b9
 - name: github.com/getlantern/keyman
@@ -96,7 +96,7 @@ imports:
   subpackages:
   - certimporter
 - name: github.com/getlantern/mtime
-  version: d72d3a6a0287edd061376f7d093de37cf18709af
+  version: 71f584d474c0cafc89ee919784b44e4ca79c124e
 - name: github.com/getlantern/netx
   version: 73cb70f5b027da6ee8c87c4c5a21b78e7cf8e9ce
 - name: github.com/getlantern/ops
@@ -114,7 +114,7 @@ imports:
 - name: github.com/getlantern/proxy
   version: 876829e39cf8243d123b02f02efe8da1266effb4
 - name: github.com/getlantern/proxybench
-  version: b44c2c020773279f8ad1219712f256cfaf700885
+  version: 11296a9d690d5b0dbf7b6927cc3e529ab6c46471
 - name: github.com/getlantern/rot13
   version: 33f93fc1fe85c042c0667a1814e6379bd5e7eb40
 - name: github.com/getlantern/rotator
@@ -128,7 +128,7 @@ imports:
 - name: github.com/getlantern/tarfs
   version: d77b63c04dbe74646c5f8f46c5c1e5523ef22415
 - name: github.com/getlantern/tlsdialer
-  version: b257e0a5981a7770c8286c8e2472f1c614371928
+  version: b4d0a731957c4658f2e281e1ae8653781719a55b
 - name: github.com/getlantern/uuid
   version: 1318e7614b82cd38041b0b0bd3692d71f3901fb8
 - name: github.com/getlantern/wfilter
@@ -160,7 +160,7 @@ imports:
 - name: github.com/xtaci/kcp-go
   version: 1a20d38aba9b713cbf9088d04b39207be1ca4d58
 - name: golang.org/x/crypto
-  version: 5b4074c2c416448b5d06e287167144493aabda43
+  version: cb497ae8f18e3c55f81bc9f3876c8f4c3d8a2813
   subpackages:
   - blowfish
   - cast5
@@ -175,7 +175,7 @@ imports:
   - twofish
   - xtea
 - name: golang.org/x/net
-  version: 69d4b8aa71caaaa75c3dfc11211d1be495abec7c
+  version: 905989bd20b7c354fd28a61074eed1c8f49ebc89
   repo: https://github.com/golang/net
   vcs: git
   subpackages:
