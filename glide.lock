@@ -1,5 +1,5 @@
 hash: b0ef14e8b64c00e697f286def88734423a8af90918a3da6ee8d59cc0e53d2768
-updated: 2017-01-06T15:55:43.256610493-08:00
+updated: 2017-01-09T12:28:12.998956478-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -36,7 +36,7 @@ imports:
 - name: github.com/getlantern/bandwidth
   version: 96de96fff16cf1aa844edc1b4a72c906add83180
 - name: github.com/getlantern/borda
-  version: 7f4e9eb4a9257ac45a31b1d9c8de0d602c43d6a2
+  version: 63461b2f3d1bc81be17e7f1a86e3fd6513baffa4
   subpackages:
   - client
 - name: github.com/getlantern/byteexec
@@ -56,7 +56,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 3dd0045f8efc3c9b49ee2352d6c23a767437cd6f
+  version: f1237e2e78c812489e67cb26aa943589aa183643
   subpackages:
   - balancer
   - borda
@@ -114,7 +114,7 @@ imports:
 - name: github.com/getlantern/proxy
   version: 876829e39cf8243d123b02f02efe8da1266effb4
 - name: github.com/getlantern/proxybench
-  version: 11296a9d690d5b0dbf7b6927cc3e529ab6c46471
+  version: 55a333803136d8208b30e9cb721cd01094b78232
 - name: github.com/getlantern/rot13
   version: 33f93fc1fe85c042c0667a1814e6379bd5e7eb40
 - name: github.com/getlantern/rotator
@@ -158,9 +158,9 @@ imports:
   subpackages:
   - orderitem
 - name: github.com/xtaci/kcp-go
-  version: 1a20d38aba9b713cbf9088d04b39207be1ca4d58
+  version: a56e81a416a264ce329129e598280df6711b475b
 - name: golang.org/x/crypto
-  version: cb497ae8f18e3c55f81bc9f3876c8f4c3d8a2813
+  version: c3b1d0d6d8690eaebe3064711b026770cc37efa3
   subpackages:
   - blowfish
   - cast5
@@ -175,7 +175,7 @@ imports:
   - twofish
   - xtea
 - name: golang.org/x/net
-  version: 905989bd20b7c354fd28a61074eed1c8f49ebc89
+  version: 4aaac4bb3614c5b62f50ce8d7a27778bfeb285ac
   repo: https://github.com/golang/net
   vcs: git
   subpackages:
