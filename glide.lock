@@ -108,7 +108,7 @@ imports:
   subpackages:
   - go-client
 - name: github.com/getlantern/protected
-  version: 07a78fc79a16cf6f56ef153bec7f602ad420e053
+  version: 55099e1fa38c5acf40b1f4445b1bac25cc43e6bc
 - name: github.com/getlantern/proxiedsites
   version: 996122c1374578a85a536445d7d7ae88d3ee5a35
 - name: github.com/getlantern/proxy
