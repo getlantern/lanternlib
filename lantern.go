@@ -42,12 +42,19 @@ var (
 
 	// if true, run Lantern against our staging infrastructure
 	stagingMode = "false"
+	staging     = false
 
 	startOnce sync.Once
 )
 
 func init() {
+	var err error
 	proclient.Configure(stagingMode, compileTimePackageVersion)
+
+	staging, err = strconv.ParseBool(stagingMode)
+	if err != nil {
+		log.Errorf("Error parsing boolean flag: %v", err)
+	}
 }
 
 // SocketProtector is an interface for classes that can protect Android sockets,
@@ -92,6 +99,7 @@ type UserConfig interface {
 	config.UserConfig
 	ConfigUpdate(bool)
 	AfterStart()
+	SetStaging(bool)
 	ShowSurvey(string)
 	BandwidthUpdate(int, int)
 }
@@ -114,6 +122,7 @@ type Updater autoupdate.Updater
 func Start(configDir string, locale string, timeoutMillis int, user UserConfig) (*StartResult, error) {
 
 	appdir.SetHomeDir(configDir)
+	user.SetStaging(staging)
 
 	startOnce.Do(func() {
 		go run(configDir, locale, user)
@@ -142,7 +151,7 @@ func run(configDir, locale string, user UserConfig) {
 		"borda-report-interval":    5 * time.Minute,
 		"borda-sample-percentage":  float64(0.01),
 		"loggly-sample-percentage": float64(0.02),
-		"staging":                  false,
+		"staging":                  staging,
 	}
 
 	err := os.MkdirAll(configDir, 0755)
@@ -152,13 +161,6 @@ func run(configDir, locale string, user UserConfig) {
 	}
 
 	log.Debugf("Writing log messages to %s/lantern.log", configDir)
-
-	staging, err := strconv.ParseBool(stagingMode)
-	if err == nil {
-		flags["staging"] = staging
-	} else {
-		log.Errorf("Error parsing boolean flag: %v", err)
-	}
 
 	flashlight.Run("127.0.0.1:0", // listen for HTTP on random address
 		"127.0.0.1:0", // listen for SOCKS on random address
