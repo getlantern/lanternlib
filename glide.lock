@@ -1,5 +1,5 @@
 hash: b0ef14e8b64c00e697f286def88734423a8af90918a3da6ee8d59cc0e53d2768
-updated: 2017-01-19T10:06:05.805140366-06:00
+updated: 2017-01-19T16:48:22.674283263-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
@@ -40,7 +40,7 @@ imports:
 - name: github.com/getlantern/bandwidth
   version: 96de96fff16cf1aa844edc1b4a72c906add83180
 - name: github.com/getlantern/borda
-  version: 3d1a1ad86876edb41451d89d2ca727109bf49bd6
+  version: 5c08a233063e117b03279dd032f59cb2dbf66e65
   subpackages:
   - client
 - name: github.com/getlantern/byteexec
@@ -62,7 +62,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 5f3513e76c2f978ef22c1afffa5953113bf2d47a
+  version: f1fac4f63412f8fdfadca6e174498e6623116f67
   subpackages:
   - balancer
   - borda
