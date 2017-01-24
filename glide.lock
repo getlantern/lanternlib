@@ -1,8 +1,8 @@
-hash: b0ef14e8b64c00e697f286def88734423a8af90918a3da6ee8d59cc0e53d2768
-updated: 2017-01-20T20:59:49.615592193-08:00
+hash: 44e31a38902f00400b800139ecc967730b07762ff40527ca729a91be3c3b417a
+updated: 2017-01-24T06:53:45.685197165-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
-  version: 50915b3ba5ee27c0b2fcdad9edd51156fb55192c
+  version: f1569079ca898d54e52a26b0bd1b5cc869310608
 - name: git.torproject.org/pluggable-transports/obfs4.git
   version: 97a875ec3c0afa629405c78e750d27e4e1f851ca
   subpackages:
@@ -24,7 +24,7 @@ imports:
   subpackages:
   - monotime
 - name: github.com/blang/semver
-  version: 3a37c301dda64cbe17f16f661b4c976803c0e2d2
+  version: dfab6d0809cb872370374c3bbe5770e926187def
 - name: github.com/cloudfoundry/gosigar
   version: dfaa4d491586af21e1ce06028df3926389a99654
 - name: github.com/dchest/siphash
@@ -122,7 +122,7 @@ imports:
   subpackages:
   - go-client
 - name: github.com/getlantern/protected
-  version: 07a78fc79a16cf6f56ef153bec7f602ad420e053
+  version: 55099e1fa38c5acf40b1f4445b1bac25cc43e6bc
 - name: github.com/getlantern/proxiedsites
   version: 996122c1374578a85a536445d7d7ae88d3ee5a35
 - name: github.com/getlantern/proxy
@@ -200,7 +200,7 @@ imports:
 - name: github.com/spaolacci/murmur3
   version: 0d12bf811670bf6a1a63828dfbd003eded177fce
 - name: github.com/stripe/stripe-go
-  version: dd408cb85bf4d18646760119451c23195d3a4547
+  version: 3f2707ab5115e7c54c70a77aabcb386d6f405810
   subpackages:
   - orderitem
 - name: github.com/xtaci/kcp-go
@@ -213,7 +213,7 @@ imports:
   - dependency/hack
   - dependency/sqltypes
 - name: golang.org/x/crypto
-  version: b8a2a83acfe6e6770b75de42d5ff4c67596675c0
+  version: 41d678d1df78cd0410143162dff954e6dc09300f
   subpackages:
   - blowfish
   - cast5
@@ -251,17 +251,6 @@ imports:
   subpackages:
   - unix
   - windows
-- name: google.golang.org/appengine
-  version: a2c54d2174c17540446e0ced57d9d459af61bc1c
-  subpackages:
-  - datastore
-  - internal
-  - internal/app_identity
-  - internal/base
-  - internal/datastore
-  - internal/log
-  - internal/modules
-  - internal/remote_api
 - name: google.golang.org/grpc
   version: 50955793b0183f9de69bd78e2ec251cf20aab121
   subpackages:
@@ -285,8 +274,6 @@ imports:
   - internal/proto
 - name: gopkg.in/vmihailenco/msgpack.v2
   version: a1382b1ce0c749733b814157c245e02cc1f41076
-  subpackages:
-  - codes
 testImports:
 - name: github.com/davecgh/go-spew
   version: 04cdfd42973bb9c8589fd6a731800cf222fde1a9

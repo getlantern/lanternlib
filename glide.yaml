@@ -18,7 +18,6 @@ import:
   subpackages:
   - go-client
 - package: github.com/getlantern/protected
-  version: 07a78fc
 - package: github.com/getlantern/uuid
 - package: github.com/stripe/stripe-go
 testImport:
