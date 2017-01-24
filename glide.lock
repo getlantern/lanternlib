@@ -1,5 +1,5 @@
-hash: 44e31a38902f00400b800139ecc967730b07762ff40527ca729a91be3c3b417a
-updated: 2017-01-24T06:53:45.685197165-08:00
+hash: 1b4f2a7f0ab23c3cc0674fd448ca2f18098b6a7d979247d0c93d8516eb3288e7
+updated: 2017-01-24T15:07:52.78091861-08:00
 imports:
 - name: git.torproject.org/pluggable-transports/goptlib.git
   version: f1569079ca898d54e52a26b0bd1b5cc869310608
@@ -62,7 +62,7 @@ imports:
 - name: github.com/getlantern/filepersist
   version: c5f0cd24e7991579ba6f5f1bd20a1ad2c9f06cd4
 - name: github.com/getlantern/flashlight
-  version: 27511840c28371fddf3e9ab9f8035625feb8fabe
+  version: 2b9c0898b6873569acbda9a3de1331a88138610b
   subpackages:
   - balancer
   - borda
@@ -112,7 +112,7 @@ imports:
 - name: github.com/getlantern/mtime
   version: ba114e4a82b0d453c15c505073a5896453b5cbd2
 - name: github.com/getlantern/netx
-  version: 73cb70f5b027da6ee8c87c4c5a21b78e7cf8e9ce
+  version: ea33fe66744c0da3cc939893acc5962da35fbd9c
 - name: github.com/getlantern/ops
   version: b70875f5d689a9438bca72aefd7142a2af889b18
 - name: github.com/getlantern/osversion
@@ -251,6 +251,17 @@ imports:
   subpackages:
   - unix
   - windows
+- name: google.golang.org/appengine
+  version: a2c54d2174c17540446e0ced57d9d459af61bc1c
+  subpackages:
+  - datastore
+  - internal
+  - internal/app_identity
+  - internal/base
+  - internal/datastore
+  - internal/log
+  - internal/modules
+  - internal/remote_api
 - name: google.golang.org/grpc
   version: 50955793b0183f9de69bd78e2ec251cf20aab121
   subpackages:
@@ -274,6 +285,8 @@ imports:
   - internal/proto
 - name: gopkg.in/vmihailenco/msgpack.v2
   version: a1382b1ce0c749733b814157c245e02cc1f41076
+  subpackages:
+  - codes
 testImports:
 - name: github.com/davecgh/go-spew
   version: 04cdfd42973bb9c8589fd6a731800cf222fde1a9
